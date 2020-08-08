@@ -10,7 +10,8 @@
   height: 45vw;
   max-width: 800px;
   max-height: 450px;
-  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(12, 1fr);
 }
 
 #flexContainer {

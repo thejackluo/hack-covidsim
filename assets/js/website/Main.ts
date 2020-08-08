@@ -4,4 +4,4 @@
 */
 import { Game } from "./Game";
 
-let newGame = (Game) => {};
+$("")let newGame = (Game) => {};
