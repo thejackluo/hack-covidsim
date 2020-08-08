@@ -3,4 +3,10 @@ $("#progressBarAnimation").click(function () {
   let width = prompt("What percentage do you change he progress bar to");
   $(".progress-bar").attr("style", `width: ${width}%`);
 });
-a;
+
+// let deathCount = new CountUp($("#deathCount"), 22, 99.99);
+
+// $("#changeDeathCount").click(function () {
+//   // $(".progress-bar").addClass("progress-bar-animation");
+//   deathCount.start();
+// });
