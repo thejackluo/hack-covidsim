@@ -48,6 +48,7 @@ define("Game", ["require", "exports"], function (require, exports) {
     exports.__esModule = true;
     exports.Game = void 0;
     var Game = (function () {
+
         function Game(totalPeople, numPeopleInfected, populationArray) {
             this.totalPeople = totalPeople;
             this.numPeopleInfected = numPeopleInfected;

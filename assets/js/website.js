@@ -6,7 +6,13 @@ $("#progressBarAnimation").click(function () {
 
 // let deathCount = new CountUp($("#deathCount"), 22, 99.99);
 
-// $("#changeDeathCount").click(function () {
-//   // $(".progress-bar").addClass("progress-bar-animation");
-//   deathCount.start();
-// });
+$("#changeDeathCount").click(function () {
+  let changedNumber = prompt("What do you want to change the death count to");
+  $("#deathCount").text(changedNumber);
+});
+
+function hide() {
+  console.log("HI");
+  $("#blackBox").hide();
+  $("#blackBoxContainer").hide();
+}

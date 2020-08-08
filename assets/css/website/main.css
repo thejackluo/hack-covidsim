@@ -32,6 +32,28 @@
   --breakpoint-xl: 1200px;
 }
 
+#blackBox {
+  background-color: black;
+  opacity: 0.9;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+#blackBoxContianer {
+  background-color: white;
+  width: 350px;
+  height: 300px;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
 #gameCanvas {
   width: 80vw;
   background-color: red;
@@ -70,15 +92,14 @@
 .policyItem {
   width: 100%;
   height: 50px;
-  background-color: pink;
+  background-color: var(--green);
   border-radius: 10px;
   font-size: 18px;
   color: blck;
   display: flex;
   align-items: center;
-  padding-left: 4%;
   font-family: "Recursive", sans-serif;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #infoBar {
@@ -96,6 +117,8 @@
   grid-row: 1/7;
   grid-column: 1/9;
   background-color: var(--yellow);
+  background-image: url("/medias/images/town.jpg");
+  background-size: cover;
 }
 
 #rightHolder {
@@ -141,6 +164,18 @@
 .game-progress {
   width: 100px;
 }
+
+#endTurn {
+  width: 100px;
+  height: 60px;
+  border-radius: 20px;
+  box-shadow: none;
+  border: 2px solid black;
+}
+
+#endTurn:hover {
+  cursor: point
+}
 /*@media*/
 
 @media screen and (max-width: 850px) {
@@ -152,22 +187,16 @@
   }
 }
 
-@media screen and (max-width: 700px) {
-  #leftHolder {
-    flex-direction: row;
-  }
-
-  .game-progress {
-    width: 40px;
-  }
-}
-
 @media screen and (max-width: 800px) {
   .imgSize {
     font-size: 40px;
   }
   .rightObjText {
     font-size: 25px;
+  }
+
+  .policyItem {
+    font-size: 15px;
   }
 }
 
@@ -178,6 +207,18 @@
 
   .rightObjText {
     font-size: 20px;
+  }
+
+  #leftHolder {
+    flex-direction: row;
+  }
+
+  .game-progress {
+    width: 40px;
+  }
+
+  .policyItem {
+    font-size: 12px;
   }
 }
 

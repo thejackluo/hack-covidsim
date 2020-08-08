@@ -31,6 +31,25 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
+    <div id="blackBox" onclick="hide()">
+      <div id="blackBoxContianer">
+        <div class="rightObject">
+          <i class="far fa-money-bill-alt imgSize"></i>
+          <div
+            class="rightObjText"
+            style="font-family: 'Recursive', sans-serif;"
+          >
+            3
+          </div>
+        </div>
+        <div>
+          Give a universal basic income to low income families [freedom: +10,
+          public opinion: +10, corporate opinion: -15, affects poor] [decreases
+          number of contacts for poor people by 1 per day]
+        </div>
+      </div>
+    </div>
+
     <div id="flexContainer">
       <div id="gameCanvas" class="shadow-drop-center">
         <div id="policy">
@@ -47,6 +66,8 @@
           <div id="policyHolder">
             <div class="policyItem">Means Tested UBI</div>
           </div>
+
+          <div id="endTurn">End Turn</div>
         </div>
 
         <div id="infoBar">
@@ -94,13 +115,13 @@
 
         <div id="img"></div>
 
-        <button class="btn btn-primary">New Game</button>
+        <!--<button class="btn btn-primary">New Game</button>
         <button id="progressBarAnimation" class="btn btn-secondary">
           Progress Bar
         </button>
         <button id="changeDeathCount" class="btn btn-danger">
           Change Death Count
-        </button>
+        </button>-->
       </div>
     </div>
     <script src="assets/js/frameworks/jquery.min.js"></script>
