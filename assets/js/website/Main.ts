@@ -3,5 +3,8 @@
 	www.jack-luo.com | @thejackluo
 */
 import { Game } from "./Game";
+import $ from "jquery";
 
-$("")let newGame = (Game) => {};
+$("#startGame").click(function startGame() {
+  let newGame = (Game) => {};
+});
