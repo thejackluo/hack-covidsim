@@ -12,7 +12,7 @@ export class Game {
     private populationArray: string[]
   ) {}
 
-  public incrementTime(time): void {
+  public incrementTime(time: number): void {
     // for (let j = 0; j < this.populationArray.length; j++) {
     //   let person = populationArray[j].getPerson();
     //   for (let k = 0; k < person.contactsPerDay; k++) {
