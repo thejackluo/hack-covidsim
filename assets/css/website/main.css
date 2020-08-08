@@ -37,8 +37,8 @@
   background-color: red;
   display: grid;
   height: 45vw;
-  max-width: 800px;
-  max-height: 450px;
+  max-width: 880px;
+  max-height: 495px;
   grid-template-rows: repeat(8, 1fr);
   grid-template-columns: repeat(12, 1fr);
 }
@@ -57,6 +57,8 @@
   grid-row: 1/-1;
   display: flex;
   overflow: auto;
+  flex-direction: column;
+  padding: 4%;
 }
 
 #infoBar {
