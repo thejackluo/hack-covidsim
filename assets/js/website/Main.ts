@@ -13,5 +13,6 @@ $("#startGame").click(function () {
 });
 
 $("#progressBarAnimation").click(function () {
-  $("#progressBarAnimation").addClass("");
+  $(".progress-bar").addClass("progress-bar-animation");
+  $(".progress-bar").attr("style", "width:100%");
 });

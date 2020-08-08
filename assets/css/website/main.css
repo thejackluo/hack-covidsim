@@ -129,12 +129,8 @@
 }
 
 @media screen and (max-width: 700px) {
-  .progressImg {
-    font-size: 12px;
-  }
-  .game-progress {
-    width: 70px;
-    height: 20px;
+  .leftHolder {
+    flex-direction: row;
   }
 }
 

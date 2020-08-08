@@ -63,8 +63,12 @@ define("Main", ["require", "exports", "Game", "jquery"], function (require, expo
     "use strict";
     exports.__esModule = true;
     var population = ["Bob", "John"];
-    jquery_1["default"]("#startGame").click(function startGame() {
+    jquery_1["default"]("#startGame").click(function () {
         var game = new Game_1.Game(5000, 1, population);
+    });
+    jquery_1["default"]("#progressBarAnimation").click(function () {
+        jquery_1["default"](".progress-bar").addClass("progress-bar-animation");
+        jquery_1["default"](".progress-bar").attr("style", "width:100%");
     });
 });
 //# sourceMappingURL=main.js.map
