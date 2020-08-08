@@ -1,4 +1,7 @@
-export class CovidGame {
+import {Person} from "./Person";
+import {} 
+
+export class Game {
   private numPeopleRecovered: number;
   private numPeopleDead: number;
   private time: number;
