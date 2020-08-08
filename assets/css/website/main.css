@@ -32,4 +32,23 @@
   grid-row: 7/-1;
   grid-column: 1/10;
   background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#img {
+  grid-row: 1/7;
+  grid-column: 1/10;
+  background-color: yellow;
+}
+
+#rightHolder {
+  display: flex;
+  flex-direction: row;
+}
+
+#leftHolder {
+  display: flex;
+  flex-direction: column;
 }
