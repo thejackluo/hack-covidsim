@@ -108,15 +108,12 @@
   align-items: center;
 }
 
-.progressInfo {
+.progressImg {
   font-size: 20px;
-  maring-right: 1p
 }
 
-.game-progress
-{
-  width: 50px;
-}
+.game-progress {
+  width: 100px;
 }
 /*@media*/
 
@@ -139,10 +136,7 @@
   }
 }
 
-
 /* Animation */
-
-
 
 /**
  * ----------------------------------------
@@ -151,27 +145,33 @@
  */
 
 .shadow-drop-center {
-	-webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: shadow-drop-center 0.4s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: shadow-drop-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
- @-webkit-keyframes shadow-drop-center {
+@-webkit-keyframes shadow-drop-center {
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
   100% {
-    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.7);
   }
 }
 @keyframes shadow-drop-center {
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
   100% {
-    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.7);
   }
+}
+
+/* Bootstrap class canceling */
+button {
+  border-radius: 0 !important;
 }

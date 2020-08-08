@@ -11,3 +11,7 @@ let population: string[] = ["Bob", "John"];
 $("#startGame").click(function startGame() {
   let game = new Game(5000, 1, population);
 });
+
+$("#startGame").click(function startGame() {
+  let game = new Game(5000, 1, population);
+});
