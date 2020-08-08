@@ -109,16 +109,34 @@
 }
 
 .progressImg {
-  font-size: 20px;
-  margin-right: 2%;
+  font-size: 22px;
+  margin-right: 4%;
+  margin-top: 2%;
 }
 
 .game-progress {
   width: 100px;
-  color: var(--red);
-  width: 0%;
 }
 /*@media*/
+
+@media screen and (max-width: 850px) {
+  .progressImg {
+    font-size: 17px;
+  }
+  .game-progress {
+    width: 70px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .progressImg {
+    font-size: 12px;
+  }
+  .game-progress {
+    width: 70px;
+    height: 20px;
+  }
+}
 
 @media screen and (max-width: 800px) {
   .imgSize {
@@ -179,22 +197,25 @@
 /* Custom */
 
 .progress-bar-animation {
-  -webkit-animation: progress-bar-animation 0.4s
+  -webkit-animation: progress-bar-animation 2s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: progress-bar-animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
+  animation: progress-bar-animation 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes progress-bar-animation {
   0% {
+    background-color: var(--red);
   }
   100% {
+    background-color: var(--green);
   }
 }
 @keyframes progress-bar-animation {
   0% {
+    background-color: var(--red);
   }
   100% {
+    background-color: var(--green);
   }
 }
 

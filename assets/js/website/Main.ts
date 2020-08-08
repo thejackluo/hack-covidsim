@@ -12,6 +12,6 @@ $("#startGame").click(function () {
   let game = new Game(5000, 1, population);
 });
 
-$("#progresBarAnimation").click(function () {
-  $("#progresBarAnimation").toggleClass("");
+$("#progressBarAnimation").click(function () {
+  $("#progressBarAnimation").addClass("");
 });
