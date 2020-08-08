@@ -1,5 +1,7 @@
 export class Person {
-  public constructor(private isEducated: boolean, private isWealthy: boolean) {}
-
-  public get x();
+  public constructor(
+    private isEducated: boolean,
+    private isWealthy: boolean,
+    private daysLeft: number
+  ) {}
 }
