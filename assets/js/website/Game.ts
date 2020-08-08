@@ -1,19 +1,13 @@
 export class CovidGame {
-  constructor(
-    private totalPeople: number,
-    private numPeopleRecovered: number,
-    private numPeopleDead: number,
-    private numPeopleInfected: number,
-    private time: number,
-    private populationArray: number[]
-  ) {}
+  private numPeopleRecovered: number;
+  private numPeopleDead: number;
+  private time: number;
 
-  // public constructor(numPeopleInfected, totalPeople, R) {
-  //   this.numPeopleInfected = numPeopleInfected;
-  //   this.totalPeople = totalPeople;
-  //   this.R = R;
-  //   for (let i = 0; i < totalPeople; i++) {}
-  // }
+  public constructor(
+    private totalPeople: number,
+    private numPeopleInfected: number,
+    private populationArray: string[]
+  ) {}
 
   public incrementTime(time): void {
     // for (let j = 0; j < this.populationArray.length; j++) {

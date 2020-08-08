@@ -2,12 +2,12 @@
 	Jack Luo Website by Jack
 	www.jack-luo.com | @thejackluo
 */
-import { CovidGame } from "./CovidGame";
+import { CovidGame } from "./Game";
 import $ from "jquery";
 
 // We need a method to generate names
-let population: String[] = ["Bob", "John"];
+let population: string[] = ["Bob", "John"];
 
 $("#startGame").click(function startGame() {
-  let game = new CovidGame(5000, 0, 0, 1, 0, population);
+  let game = new CovidGame(5000, 1, population);
 });
