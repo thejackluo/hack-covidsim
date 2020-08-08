@@ -1,3 +1,4 @@
+//Regular Functions
 $("#progressBarAnimation").click(function () {
   // $(".progress-bar").addClass("progress-bar-animation");
   let width = prompt("What percentage do you change he progress bar to");
@@ -11,6 +12,7 @@ $("#changeDeathCount").click(function () {
   $("#deathCount").text(changedNumber);
 });
 
+//Website Functions
 function hide() {
   console.log("HI");
   $("#blackBox").hide();
