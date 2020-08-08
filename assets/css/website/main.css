@@ -53,14 +53,14 @@
 
 #policy {
   grid-column: 10/-1;
-  background-color: blue;
+  background-color: var(--blue);
   grid-row: 1/-1;
 }
 
 #infoBar {
   grid-row: 7/-1;
   grid-column: 1/10;
-  background-color: green;
+  background-color: var(--green);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,7 +71,7 @@
 #img {
   grid-row: 1/7;
   grid-column: 1/10;
-  background-color: yellow;
+  background-color: var(--yellow);
 }
 
 #rightHolder {
@@ -100,6 +100,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.game-progress {
 }
 
 /*@media*/
