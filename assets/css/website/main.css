@@ -102,9 +102,20 @@
   align-items: center;
 }
 
-.game-progress {
+.progressItem {
+  display: flex;
+  flex-direction: row;
 }
 
+.progressInfo {
+  font-size: 20px;
+}
+
+.game-progress
+{
+  width: 50px;
+}
+}
 /*@media*/
 
 @media screen and (max-width: 800px) {
