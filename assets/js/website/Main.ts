@@ -6,8 +6,8 @@ import { CovidGame } from "./CovidGame";
 import $ from "jquery";
 
 // We need a method to generate names
-let population:
+let population: String[] = ["Bob", "John"];
 
 $("#startGame").click(function startGame() {
-  let game = new CovidGame(5000, 0, 0, 1, 0, );
+  let game = new CovidGame(5000, 0, 0, 1, 0, population);
 });
