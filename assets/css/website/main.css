@@ -27,3 +27,9 @@
   background-color: blue;
   grid-row: 1/-1;
 }
+
+#infoBar {
+  grid-row: 7/-1;
+  grid-column: 1/10;
+  background-color: green;
+}
