@@ -55,6 +55,8 @@
   grid-column: 10/-1;
   background-color: var(--blue);
   grid-row: 1/-1;
+  display: flex;
+  overflow: auto;
 }
 
 #infoBar {
@@ -129,8 +131,12 @@
 }
 
 @media screen and (max-width: 700px) {
-  .leftHolder {
+  #leftHolder {
     flex-direction: row;
+  }
+
+  .game-progress {
+    width: 40px;
   }
 }
 
