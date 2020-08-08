@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Jack Luo's Website Template with Bootstrap, JQuery, FontAwesome, Normalize",
   "main": "main.js",
-  "dependencies": {},
+  "dependencies": {
+    "@types/jquery": "^3.5.1",
+    "countup.js": "^2.0.6"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

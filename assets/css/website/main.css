@@ -52,18 +52,38 @@
 }
 
 #policy {
-  grid-column: 10/-1;
+  grid-column: 9/-1;
   background-color: var(--blue);
   grid-row: 1/-1;
   display: flex;
-  overflow: auto;
   flex-direction: column;
   padding: 4%;
 }
 
+#policyHolder {
+  overflow: scroll;
+  overflow-x: hidden;
+  flex: 1;
+  padding-right: 4%;
+}
+
+.policyItem {
+  width: 100%;
+  height: 50px;
+  background-color: pink;
+  border-radius: 10px;
+  font-size: 20px;
+  color: blck;
+  display: flex;
+  align-items: center;
+  padding-left: 4%;
+  font-family: "Recursive", sans-serif;
+  justify-content: space-between;
+}
+
 #infoBar {
   grid-row: 7/-1;
-  grid-column: 1/10;
+  grid-column: 1/9;
   background-color: var(--green);
   display: flex;
   align-items: center;
@@ -74,7 +94,7 @@
 
 #img {
   grid-row: 1/7;
-  grid-column: 1/10;
+  grid-column: 1/9;
   background-color: var(--yellow);
 }
 
