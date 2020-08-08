@@ -1,5 +1,5 @@
-import {Person} from "./Person";
-import {} 
+import { Person } from "./Person";
+import { Policy } from "./Policy";
 
 export class Game {
   private numPeopleRecovered: number;

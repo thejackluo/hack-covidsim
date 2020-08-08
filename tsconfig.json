@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outFile": "assets/js/main.js",
+    "sourceMap": true
+  },
+  "include": ["assets/js/website"]
+}

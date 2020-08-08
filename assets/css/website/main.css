@@ -46,7 +46,7 @@
 #rightHolder {
   display: flex;
   flex-direction: row;
-  padding-left: 20px;
+  padding-left: 4%;
 }
 
 #leftHolder {
@@ -54,9 +54,19 @@
   flex-direction: column;
 }
 
-.rightObj {
+.rightObjText {
   font-size: 2vw;
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin: 5px;
+}
+
+.imgSize {
+  font-size: 4vw;
+}
+
+.rightObject {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
 }
