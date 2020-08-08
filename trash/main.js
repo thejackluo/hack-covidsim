@@ -39,7 +39,7 @@ define("Policy", ["require", "exports"], function (require, exports) {
     function Policy() {}
     return Policy;
   })();
-  expts.Game = Game;
+  exports.Policy = Policy;
 });
 
 define("Game", ["require", "exports"], function (require, exports) {

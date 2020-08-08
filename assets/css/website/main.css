@@ -41,7 +41,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  display: none;
 }
 
 #blackBoxContianer {
@@ -49,9 +48,11 @@
   width: 350px;
   height: 300px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 40px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: justify;
 }
 
 #gameCanvas {
@@ -166,15 +167,21 @@
 }
 
 #endTurn {
-  width: 100px;
-  height: 60px;
+  width: 120px;
+  height: 50px;
   border-radius: 20px;
   box-shadow: none;
   border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-family: "Recursive", sans-serif;
+  background-color: yellow;
 }
 
 #endTurn:hover {
-  cursor: point
+  cursor: pointer;
 }
 /*@media*/
 
@@ -184,6 +191,11 @@
   }
   .game-progress {
     width: 70px;
+  }
+
+  #endTurn {
+    width: 100px;
+    font-size: 14px;
   }
 }
 
