@@ -83,53 +83,50 @@ let allPolicies = {
 
   9: {
     Name: "Halt eviction and foreclosure",
-    Description: "Stop government from deporting people",
+    Description:
+      "Prevents all families from being evicted from their homes. Increases public opinion and lowers corprate opinion. Slightly lowers contacts per day.",
     Price: 2,
-    Freedom: 10,
+    Freedom: 0,
     "Public Opinion": 15,
     "Corperate Opinion": -15,
   },
   10: {
-    Name: "I love getting vaccinated!",
-    Description: "Gift covid test kits to hospitals",
+    Name: "Covid Testing Kets",
+    Description:
+      "Gift covid test kits to hospitals. Lowers contacts per day of those infected. Increases public / corprate opinion",
     Price: 2,
     Freedom: 0,
     "Public Opinion": 15,
-    "Corperate Opinion": -10,
+    "Corperate Opinion": 0,
   },
   11: {
-    Name: "Health Insurance but better!",
-    Description: "Provide free covid healthcare",
-    Price: 3,
-    Freedom: 0,
+    Name: "Covid Health Insurance",
+    Description:
+      "Provide free covid healthcare! Lowers contacts per day, and transmisions and survial rates of everyone,  especially low income. Increases freedom and public opinion but drastically lowers corprate opinion.",
+    Price: 5,
+    Freedom: 20,
     "Public Opinion": 20,
-    "Corperate Opinion": -10,
-  },
-  12: {
-    Name: "Halt eviction and foreclosure",
-    Description: "Stop government from deporting people",
-    Price: 2,
-    Freedom: 10,
-    "Public Opinion": 15,
-    "Corperate Opinion": -15,
-  },
-  13: {
-    Name: "Corporate Welfare",
-    Description: "Give free money to coperation",
-    Price: 2,
-    Freedom: 0,
-    "Public Opinion": 0,
-    "Corperate Opinion": 15,
-  },
-  14: {
-    Name: "Mass Ventilator Production",
-    Description: "Make corporates pay for overpriced ventilators",
-    Price: 2,
-    Freedom: 10,
-    "Public Opinion": 10,
     "Corperate Opinion": -20,
   },
-  15: {
+
+  12: {
+    Name: "Corporate Welfare",
+    Description:
+      "Give free money to coperation. Increases corprate approval significantly and slightly lowers public opinion.",
+    Price: 2,
+    Freedom: 0,
+    "Public Opinion": -5,
+    "Corperate Opinion": 15,
+  },
+  13: {
+    Name: "Mass Ventilator Production",
+    Description: "Funds production of ventiators for ",
+    Price: 3,
+    Freedom: 10,
+    "Public Opinion": 10,
+    "Corperate Opinion": 10,
+  },
+  14: {
     Name: "What’s Privacy?",
     Description: "Send a text to each family member about their temperature",
     Price: 1,
@@ -473,32 +470,36 @@ let policyArray = game.getPolicyArray();
 game.createAllPolicy();
 console.log(policyArray);
 
-for (var i = 0; i < policyArray.length; i++) {
-  var obj = document.createElement("DIV");
-  obj.className = "policyItem";
-  obj.innerHTML = policyArray[i].name;
-  obj.description = policyArray[i].description;
-  obj.cost = policyArray[i].cost;
-  obj.policy = policyArray[i];
-  obj.onclick = function (e) {
-    show();
-    console.log(e);
-    let tempObj = e.path[0];
-    document.getElementById("popUpDesc").innerHTML = tempObj.description;
-    document.getElementById("popUpDesc").policy = tempObj.policy;
-    document.getElementById("popUpCost").innerHTML = tempObj.cost;
-  };
-  document.getElementById("policyHolder").appendChild(obj);
-}
+create = () => {
+  for (let i = 0; i < policyArray.length; i++) {
+    let obj = document.createElement("DIV");
+    obj.className = "policyItem";
+    obj.innerHTML = policyArray[i].name;
+    obj.description = policyArray[i].description;
+    obj.cost = policyArray[i].cost;
+    obj.policy = policyArray[i];
 
-function confirm() {
+    obj.onclick = function (e) {
+      show();
+      console.log(e);
+      let tempObj = e.path[0];
+      document.getElementById("popUpDesc").innerHTML = tempObj.description;
+      document.getElementById("popUpDesc").policy = tempObj.policy;
+      document.getElementById("popUpCost").innerHTML = tempObj.cost;
+    };
+    document.getElementById("policyHolder").appendChild(obj);
+  }
+};
+let confirm = () => {
   let temp = document.getElementById("popUpDesc").policy;
   console.log(temp);
+
   // if (temp.getImplementation()) {
   //   temp.setAttribute("style", "background-color: var(--green);");
   // } else {
   //   temp.setAttribute("style", "background-color: var(--red);");
   // }
+  update();
   let action = document.getElementById("actionCurrency");
   if (Number.parseInt(action.textContent) - temp.cost > 0) {
     action.textContent = Number.parseInt(action.textContent) - temp.cost;
@@ -511,4 +512,29 @@ function confirm() {
     }, 2000);
     hide();
   }
-}
+};
+
+update = () => {
+  let policyContainer = document.getElementById("policyHolder");
+  policyContainer.innerHTML = "";
+  for (let i = 0; i < policyArray.length; i++) {
+    let obj = document.createElement("DIV");
+    obj.className = "policyItem";
+    obj.innerHTML = policyArray[i].name;
+    obj.description = policyArray[i].description;
+    obj.cost = policyArray[i].cost;
+    obj.policy = policyArray[i];
+
+    obj.onclick = function (e) {
+      show();
+      console.log(e);
+      let tempObj = e.path[0];
+      document.getElementById("popUpDesc").innerHTML = tempObj.description;
+      document.getElementById("popUpDesc").policy = tempObj.policy;
+      document.getElementById("popUpCost").innerHTML = tempObj.cost;
+    };
+    document.getElementById("policyHolder").appendChild(obj);
+  }
+};
+
+create();
