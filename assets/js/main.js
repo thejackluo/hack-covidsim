@@ -228,7 +228,14 @@ class Game {
         let contactedPerson = this.personArray[
           this.randomNumber(this.personArray.length) - 1
         ];
-        if (person.getIsInfected() && !(contactedPerson.getIsInfected() || contactedPerson.getIsDead() || contactedPerson.getIsCured())) {
+        if (
+          person.getIsInfected() &&
+          !(
+            contactedPerson.getIsInfected() ||
+            contactedPerson.getIsDead() ||
+            contactedPerson.getIsCured()
+          )
+        ) {
           contactedPerson.isIncubated = true;
         }
       }
@@ -389,7 +396,7 @@ class Person {
   }
 
   incrementInfect() {
-    if (!((Math.floor(Math.random() * 100) + 1) <= this.survivalRate)) {
+    if (!(Math.floor(Math.random() * 100) + 1 <= this.survivalRate)) {
       this.isDead = true;
       this.isInfected = false;
     }
@@ -398,7 +405,6 @@ class Person {
       this.isInfected = false;
     }
     this.numInfectedDays++;
-   
   }
 
   updateSurvivalRate() {
@@ -407,7 +413,6 @@ class Person {
     } else {
       this.survivalRate = 95 - 10 * this.numInfectedDays;
     }
-    
   }
 
   infect() {
@@ -445,13 +450,11 @@ class Person {
     return this.isCured;
   }
 
-  getNumDays()
-  {
+  getNumDays() {
     return this.numInfectedDays;
   }
 
-  getSurvivalRate()
-  {
+  getSurvivalRate() {
     return this.survivalRate;
   }
 
@@ -626,12 +629,22 @@ function stats() {
   console.log(list);
   for (let i = 0; i < list.length; i++) {
     let obj = document.createElement("DIV");
-    obj.innerHTML = i + ": isEducated, " + list[i].educated() + ": isWealthy, " + list[i].isRich() + ": isInfected, " + list[i].getIsInfected() + ": days, " + list[i].getNumDays()+ ": survivalRate, " + list[i].getSurvivalRate();
+    obj.innerHTML =
+      i +
+      ": isEducated, " +
+      list[i].educated() +
+      ": isWealthy, " +
+      list[i].isRich() +
+      ": isInfected, " +
+      list[i].getIsInfected() +
+      ": days, " +
+      list[i].getNumDays() +
+      ": survivalRate, " +
+      list[i].getSurvivalRate();
     console.log(obj);
     document.getElementById("stats").appendChild(obj);
   }
 }
-
 
 // update = () => {
 //   let policyContainer = document.getElementById("policyHolder");
