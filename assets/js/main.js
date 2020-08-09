@@ -207,10 +207,19 @@ class Game {
   }
 
   incrementTime(time) {
-    policyArray
-    // Updates all policies that is approved
-    // Do an infection
-    // 
+    for (let i = 0; i < policyArray.length; i++) {
+      this.publicOpinion = 50;
+      this.corporateOpinion = 50;
+      this.freedom = 50;
+      if (policyArray[i].getImplementation()) {
+       this.publicOpinion += policyArray[i].getPublicOpinion;
+       this.corporateOpinion  += policyArray[i].getCorporateOpinion;
+       this.freedom += policyArray[i].getFreedom;
+      }
+    }
+    $(".public-progress").attr("style", "width: ${this.publicOpinion}%");
+   $(".freedom-progress").attr("style", "width: ${thiss.freedomOpinion}%");
+   $(".corporate-progress").attr("style", "width: ${this.corporateOpinion}%");
     for (let i = 0; i < time; i++) {
       for (let j = 0; j < this.personArray.length; j++) {
         // This determines the person
@@ -437,6 +446,7 @@ for (var i = 0; i < policyArray.length; i++) {
   obj.innerHTML = policyArray[i].name;
   obj.description = policyArray[i].description;
   obj.cost = policyArray[i].cost;
+  obj.policy = policyArray[i];
   obj.onclick = function (e) {
     show();
     console.log(e);
