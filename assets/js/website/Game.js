@@ -1,7 +1,7 @@
 import { Person } from "./Person";
 import { Policy } from "./Policy";
 
-class Game {
+export class Game {
   constructor(totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts) {
     // Custom Variables
     // Can set doing start time
@@ -33,8 +33,36 @@ class Game {
 
     this.policyArray;
     // create all policies here
-    policyArray.push(new Policy());
+    policyArray.push(new Policy("Universal Masks", 3, 10, -5, 0));
+    pol;
   }
+
+  // Game starting
+
+  startGame() {
+    createPeople(1000);
+  }
+
+  gameOver() {
+    alert("You lose!");
+  }
+
+  incrementTime(time) {
+    for (let i = 0; i < time; i++) {
+      for (let j = 0; j < this.personArray.length; j++) {
+        // This determines the person
+        let person = populationArray[j].getPerson();
+        for (let k = 0; k < person.contactsPerDay; k++) {
+          // This determines who the person he is going to Contact
+          let contactedPerson =
+            populationArray[Math.floor(Math.random() * populationArray.length)];
+          if (person.isInfected) person.infection();
+        }
+      }
+    }
+  }
+
+  // Creations
 
   createPerson(educationPercentage, infectionPercentage, wealthyPercentage) {
     // False is default
@@ -58,6 +86,8 @@ class Game {
     return new Policy(name, publicOpinion, corporateOpinion, freedom);
   }
 
+  // Implementation of Policies
+
   implementPolicy(person, policyObject) {
     // Get all the policy variables
     // Adds it to the person
@@ -65,14 +95,6 @@ class Game {
 
   removePolicy(policyObject) {
     // Find policy in implemeted policies
-  }
-
-  startGame() {
-    createPeople(1000);
-  }
-
-  gameOver() {
-    alert("You lose!");
   }
 
   // If public opinion goes 20%
@@ -87,7 +109,14 @@ class Game {
     }
   }
 
-  //
+  // Getter Method
+  getPolicyArray() {
+    return this.policyArray;
+  }
+
+  // Setter Method
+
+  // Helper Methods
   randomNumber(max) {
     return Math.floor(Math.random() * max) + 1;
   }
@@ -95,20 +124,5 @@ class Game {
   probabilityCalculator(percentage) {
     if (randomNumber(percentage) <= 100) return true;
     return false;
-  }
-
-  incrementTime(time) {
-    for (let i = 0; i < time; i++) {
-      for (let j = 0; j < this.personArray.length; j++) {
-        // This determines the person
-        let person = populationArray[j].getPerson();
-        for (let k = 0; k < person.contactsPerDay; k++) {
-          // This determines who the person he is going to Contact
-          let contactedPerson =
-            populationArray[Math.floor(Math.random() * populationArray.length)];
-          if (person.isInfected) person.infection();
-        }
-      }
-    }
   }
 }
