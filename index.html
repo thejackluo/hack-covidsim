@@ -31,6 +31,24 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="medias/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="medias/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="medias/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="medias/icons/site.webmanifest" />
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <script
@@ -47,6 +65,7 @@
       <strong>Sorry!</strong> You didn't have enough action to purchase this
       policy.
     </div>
+
     <div id="blackBox" style="z-index: 10;">
       <div id="blackBoxContianer">
         <i class="fa fa-times" aria-hidden="true" onclick="hide(this)"></i>
@@ -108,7 +127,12 @@
               justify-content: space-between;
             "
           >
-            <div id="endTurn" class="buttonA" style="margin-top: 10px;">
+            <div
+              id="endTurn"
+              onclick="document.getElementById('buttonClick').play();"
+              class="buttonA"
+              style="margin-top: 10px;"
+            >
               End Turn
             </div>
           </div>
@@ -168,6 +192,12 @@
         <div id="piechart" style="z-index: 1;"></div>
       </div>
     </div>
+
+    <audio
+      id="buttonClick"
+      src="medias/audios/button-click.ogg"
+      preload="auto"
+    ></audio>
 
     <script></script>
     <script src="assets/js/frameworks/jquery.min.js"></script>
