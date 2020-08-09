@@ -122,7 +122,7 @@
   grid-row: 1/7;
   grid-column: 1/9;
   background-color: var(--yellow);
-  background-image: url("medias/images/town.jpg");
+  background-image: url("/medias/images/town.jpg");
   background-size: cover;
 }
 

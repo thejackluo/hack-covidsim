@@ -211,8 +211,9 @@ class Game {
       let person = this.personArray[i];
       if (person.getIsIncubated()) {
         person.infect();
+        person.isIncubated = false;
       }
-      for (let j = 0; j < person.contactsPerDay; j++) {
+      for (let j = 0; j < this.randomNumber(this.maxNumOfContacts); j++) {
         // This determines who the person he is going to Contact
         let contactedPerson = this.personArray[
           this.randomNumber(personArray.length)
@@ -434,12 +435,11 @@ class Policy {
 
 const game = new Game(500, 100, 0.2, 5, 50);
 
-create();
-hide();
-$("#alertMessageSuccess").hide();
-$("#alertMessageFailure").hide();
-
 $(document).ready(function () {
+  create();
+  hide();
+  $("#alertMessageSuccess").hide();
+  $("#alertMessageFailure").hide();
   $("#progressBarAnimation").click(function () {
     // $(".progress-bar").addClass("progress-bar-animation");
     let width = prompt("What percentage do you change he progress bar to");
@@ -459,8 +459,7 @@ $(document).ready(function () {
 });
 
 // Website Functions
-let hide = (e) => {
-  console.log(e);
+let hide = () => {
   $("#blackBox").hide();
 };
 
@@ -508,15 +507,25 @@ let confirm = () => {
   if (Number.parseInt(action.textContent) - temp.cost > 0) {
     action.textContent = Number.parseInt(action.textContent) - temp.cost;
     temp.toggleImplementation();
-    document.getElementById("policyHolder").removeChild(ser);
+
     $("#alertMessageSuccess").html(
-      `<strong>Success!</strong> You have purchased ${temp.Name} for ${temp.cost} actions.`
+      `<strong>Success!</strong> You have purchased ${ser.innerHTML} for ${temp.cost} actions.`
     );
     $("#alertMessageSuccess").slideDown();
     setTimeout(function () {
       $("#alertMessageSuccess").slideUp();
     }, 3000);
     hide();
+    document.getElementById("policyHolder").removeChild(ser);
+
+    let list = document.getElementsByClassName("policyItem");
+    console.log(list);
+
+    for(let i = 0; i < list.size(); i++)
+    {
+      if(list[i].cost == 3)
+    }
+
   } else {
     $("#alertMessageFailure").slideDown();
     setTimeout(function () {
