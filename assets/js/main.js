@@ -54,7 +54,7 @@ let allPolicies = {
     "Corperate Opinion": -10,
   },
   6: {
-    Name: "Furlough workers",
+    Name: "Furlough Workers",
     Description:
       "Workers cannot be fired, but rather they can be suspended from work without pay while still keeping their job. Increases public approval significantly. Lowers corprate approval significantly.",
     Price: 2,
@@ -63,7 +63,7 @@ let allPolicies = {
     "Corperate Opinion": -15,
   },
   7: {
-    Name: "Unemployment Benifits",
+    Name: "Unemployment Benefits",
     Description:
       "Government pays for worker’s salary who have been fired. Slightly increases freedom and fairly increases corprate / public opinion.",
     Price: 5,
@@ -209,19 +209,17 @@ class Game {
     for (let i = 0; i < this.personArray.length; i++) {
       // This determines the person in the population
       let person = this.personArray[i];
-      if (person.getIsIncubated()) {
-        person.infect();
-        person.isIncubated = false;
-      }
+      // if (person.getIsIncubated()) {
+      //   person.infect();
+      //   person.isIncubated = false;
+      // }
       for (let j = 0; j < this.randomNumber(this.maxNumOfContacts); j++) {
         // This determines who the person he is going to Contact
         let contactedPerson = this.personArray[
-          this.randomNumber(this.personArray.length)
+          this.randomNumber(this.personArray.length) - 1
         ];
         if (person.getIsInfected() && !contactedPerson.getIsInfected()) {
-          contactedPerson.incubation();
-        } else if (contactedPerson.getIsInfected() && !person.getIsInfected()) {
-          person.incubation();
+          contactedPerson.infect();
         }
       }
     }
@@ -344,6 +342,10 @@ class Person {
     this.survivalRate = 95;
   }
 
+  incubation() {
+    this.isIncubated = true;
+  }
+
   updateSurvivalRate() {}
 
   getIsIncubated() {
@@ -368,10 +370,6 @@ class Person {
 
   poor() {
     this.isWealthy = false;
-  }
-
-  incubation() {
-    this.incubation = true;
   }
 }
 
@@ -433,7 +431,7 @@ class Policy {
 //Regular Functions
 // import { Game } from "website/Game";
 
-const game = new Game(500, 100, 0.2, 5, 50);
+const game = new Game(2000, 100, 0.2, 2, 50);
 
 $(document).ready(function () {
   create();
@@ -442,7 +440,7 @@ $(document).ready(function () {
   $("#alertMessageFailure").hide();
   $("#progressBarAnimation").click(function () {
     // $(".progress-bar").addClass("progress-bar-animation");
-    let width = prompt("What percentage do you change he progress bar to");
+    let width = prompt("What percentage do you change the progress bar to");
     $(".progress-bar").attr("style", `width: ${width}%`);
   });
 
