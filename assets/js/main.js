@@ -207,13 +207,13 @@ class Game {
     // Have each person contact another person
     for (let i = 0; i < this.personArray.length; i++) {
       // This determines the person in the population
-      let person = populationArray[j].getPerson();
+      let person = this.personArray[i];
       if (person.getIsIncubated()) {
         person.infect();
       }
       for (let j = 0; j < person.contactsPerDay; j++) {
         // This determines who the person he is going to Contact
-        let contactedPerson = populationArray[this.randomNumber(populationArray.length)];
+        let contactedPerson = this.personArray[this.randomNumber(personArray.length)];
         if (person.getIsInfected() && !(contactedPerson.getIsInfected())) {
           contactedPerson.incubation();
         } else if (contactedPerson.getIsInfected() && !(person.getIsInfected())) {
@@ -221,7 +221,7 @@ class Game {
         }
       }
     }
-    let infectionCount = checkInfectionCount()
+    let infectionCount = this.checkInfectionCount()
     $("infectedCount").text(infectionCount);
   }
 
@@ -249,7 +249,7 @@ class Game {
     if (this.probabilityCalculator(wealthyPercentage)) isWealthy = true;
 
     // Add person to person Array
-    let person = new Person(isEducated, isInfected, isWealthy, isIncubated);
+    return new Person(isEducated, isInfected, isWealthy, isIncubated);
   }
   // Create an Array of people
   // Go through a for loop
@@ -354,16 +354,20 @@ class Person {
     return this.isInfected;
   }
 
+  infect = () => {
+    this.isInfected = true;
+  };
+
   recover = () => {
-    this.isInfected = false
+    this.isInfected = false;
   };
 
   rich = () => {
-    this.isWealthy = true
+    this.isWealthy = true;
   };
 
   poor = () => {
-    this.isWealthy = false
+    this.isWealthy = false;
   };
 
   incubation = () => {
@@ -396,9 +400,9 @@ class Policy {
 
   toggleImplementation() {
     if (getImplementation()) {
-      this.implementation = false;
+      this.implementation = false
     } else {
-      this.implementation = true;
+      this.implementation = tru
     }
   }
 
@@ -429,6 +433,8 @@ class Policy {
 
 //Regular Functions
 // import { Game } from "website/Game";
+
+const game = new Game(500, 100, 0.2, 5, 50);
 
 $(document).ready(function() {
   $("#progressBarAnimation").click(function () {
@@ -467,7 +473,6 @@ $(document).ready(function() {
 
 // totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
 hide();
-const game = new Game(500, 100, 0.2, 5, 50);
 let policyArray = game.getPolicyArray();
 game.createAllPolicy();
 console.log(policyArray);
@@ -485,7 +490,11 @@ for (var i = 0; i < policyArray.length; i++) {
     var tempObj = e.path[0];
     document.getElementById("popUpDesc").innerHTML = tempObj.description;
     document.getElementById("popUpCost").innerHTML = tempObj.cost;
-    document.getElementById("confirm")
   };
   document.getElementById("policyHolder").appendChild(obj); 
+}
+
+function confirm(e)
+{
+  console.log(e);
 }
