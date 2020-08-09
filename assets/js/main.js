@@ -333,7 +333,7 @@ class Person {
     this.survivalRate = 95;
   }
 
-  updateSurvivalRate() {1p000
+  updateSurvivalRate() {
     
   }
 
