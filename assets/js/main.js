@@ -219,33 +219,37 @@ class Game {
         person.infect();
         person.isIncubated = false;
       }
+      if (person.getIsInfected()) {
+        person.updateSurvivalRate();
+        person.incrementInfect();
+      }
       for (let j = 0; j < this.randomNumber(this.maxNumOfContacts); j++) {
         // This determines who the person he is going to Contact
         let contactedPerson = this.personArray[
           this.randomNumber(this.personArray.length) - 1
         ];
-        if (person.getIsInfected() && !contactedPerson.getIsInfected()) {
+        if (person.getIsInfected() && !(contactedPerson.getIsInfected() || contactedPerson.getIsDead() || contactedPerson.getIsCured())) {
           contactedPerson.isIncubated = true;
         }
       }
-      if (person.getIsInfected()) {
-        person.numInfectedDays()++;
-      }
-      //After two weeks, person will either die or get cured
-      if (person.numInfectedDays > 2) {
-        let randomNumber = Math.floor(Math.random() * 100 + 1);
-        if (randomNumber <= 5) {
-          person.isDead = true;
-        }else{
-          person.isCured  true;
-        }
-        person.cured();
-      }
+      // if (person.getIsInfected()) {
+      //   person.numInfectedDays()++;
+      // }
+      // //After two weeks, person will either die or get cured
+      // if (person.numInfectedDays > 2) {
+      //   let randomNumber = Math.floor(Math.random() * 100 + 1);
+      //   if (randomNumber <= 5) {
+      //     person.isDead = true;
+      //   }else{
+      //     person.isCured  true;
+      //   }
+      //   person.cured();
+      // }
     }
     let infectionCount = this.checkInfectionCount();
     $("#infectedCount").text(infectionCount);
     let deathCount = this.checkDeathCount();
-    $("deathCount").text(deathCount);
+    $("#deathCount").text(deathCount);
   }
 
   checkInfectionCount() {
@@ -385,15 +389,15 @@ class Person {
   }
 
   incrementInfect() {
-    if (!(probabilityCalculator(this.survivalRate))) {
+    if (!((Math.floor(Math.random() * 100) + 1) <= this.survivalRate)) {
       this.isDead = true;
       this.isInfected = false;
     }
-    if (numInfectedDays > 7) {
+    if (this.numInfectedDays > 7) {
       this.isCured = true;
       this.isInfected = false;
     }
-    numInfectedDays++;
+    this.numInfectedDays++;
    
   }
 
@@ -437,13 +441,22 @@ class Person {
     return this.isDead;
   }
 
-  randomNumber(max) {
-    return Math.floor(Math.random() * max) + 1;
+  getIsCured() {
+    return this.isCured;
   }
 
-  probabilityCalculator(percentage) {
-    if (this.randomNumber(100) <= percentage) return true;
-    return false;
+  getNumDays()
+  {
+    return this.numInfectedDays;
+  }
+
+  getSurvivalRate()
+  {
+    return this.survivalRate;
+  }
+
+  educated() {
+    this.isEducated = true;
   }
 }
 
@@ -612,9 +625,13 @@ function stats() {
   let list = game.getPersonArray();
   console.log(list);
   for (let i = 0; i < list.length; i++) {
-    console.log(list[i]);
+    let obj = document.createElement("DIV");
+    obj.innerHTML = i + ": isEducated, " + list[i].educated() + ": isWealthy, " + list[i].isRich() + ": isInfected, " + list[i].getIsInfected() + ": days, " + list[i].getNumDays()+ ": survivalRate, " + list[i].getSurvivalRate();
+    console.log(obj);
+    document.getElementById("stats").appendChild(obj);
   }
 }
+
 
 // update = () => {
 //   let policyContainer = document.getElementById("policyHolder");
