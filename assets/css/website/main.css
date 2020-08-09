@@ -47,7 +47,7 @@
   background-color: white;
   width: 350px;
   border-radius: 10px;
-  padding:  30px 40px;
+  padding: 30px 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -93,7 +93,7 @@
   min-height: 50px;
   height: auto;
   padding: 10px;
-  background-color: var(--green);
+  background-color: var(--red);
   border-radius: 10px;
   font-size: 18px;
   color: blck;
@@ -171,7 +171,6 @@
 }
 
 #endTurn {
-  
 }
 
 #endTurn:hover {
@@ -291,7 +290,7 @@
 }
 
 /* Bootstrap class canceling */
-.buttonA{
+.buttonA {
   width: 120px;
   height: 50px;
   border-radius: 20px;
@@ -305,7 +304,6 @@
   background-color: yellow;
 }
 
-.buttonA:hover
-{
+.buttonA:hover {
   cursor: pointer;
 }

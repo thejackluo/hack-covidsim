@@ -31,6 +31,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
+    <div class="alert alert-success" id="alertMessage">
+      <strong>Sorry!</strong> You didn't have enough action to purchase this
+      policy.
+    </div>
     <div id="blackBox">
       <div id="blackBoxContianer">
         <i class="fa fa-times" aria-hidden="true" onclick="hide(this)"></i>
@@ -76,9 +80,10 @@
             <i class="far fa-money-bill-alt imgSize"></i>
             <div
               class="rightObjText"
+              id="actionCurrency"
               style="font-family: 'Recursive', sans-serif;"
             >
-              50
+              10
             </div>
           </div>
 
@@ -107,7 +112,7 @@
               <div class="progress game-progress">
                 <div
                   class="progress-bar bg-danger progress-bar-striped progress-bar-animated freedom-progress"
-                  style="width: 70%;"
+                  style="width: 50%;"
                 ></div>
               </div>
             </div>
@@ -116,7 +121,7 @@
               <div class="progress game-progress">
                 <div
                   class="progress-bar bg-warning progress-bar-striped progress-bar-animated public-progress"
-                  style="width: 70%;"
+                  style="width: 50%;"
                 ></div>
               </div>
             </div>
@@ -125,7 +130,7 @@
               <div class="progress game-progress">
                 <div
                   class="progress-bar bg-primary progress-bar-striped progress-bar-animated corporate-progress"
-                  style="width: 70%;"
+                  style="width: 50%;"
                 ></div>
               </div>
             </div>
