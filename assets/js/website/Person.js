@@ -1,43 +1,49 @@
 export class Person {
-  public constructor(
-    private isEducated: boolean,
-    private isInfected: boolean,
-    private isWealthy: boolean,
-    private daysLeft: number
-  ) {}
-
-  public getInfected(): boolean {
-    return this.isInfected;
-    // returns if is infected
+  constructor(isEducated, isInfected, isWealthy, incubation) {
+    this.isEducated = isEducated;
+    this.isInfected = isInfected;
+    this.isWealthy = isWealthy;
+    this.incubation = incubation;
   }
 
-  public getEducated(): boolean {
-    return;
-
-    // returns if is educated
-  }
-
-  public incrementDay(): void {
-    // decrease day, infectedToday = false
-  }
-
-  public remainingDays(): number {
-    return;
-
-    // returns remaining days
-  }
-
-  public survives(): boolean {
-    return;
-
-    // return true if RNG give number < chanceOf survival
-  }
-
-  public infection(): void {
-    // sets days to a range between 6 and 21, setsisInfected to true, infectedToday to true
-  }
-
-  public update(): void {
-    return;
-  }
+  incubation = () => (infect = () => (this.isInfected = true));
+  recover = () => (this.isInfected = false);
+  rich = () => (this.isWealthy = true);
+  poor = () => (this.isWealthy = false);
 }
+
+// getInfected() {
+//   return this.isInfected;
+//
+// returns if is infected
+// }
+
+// getEducated() {
+//   return;
+
+//   // returns if is educated
+// }
+
+// incrementDay() {
+//   // decrease day, infectedToday = false
+// }
+
+// remainingDays() {
+//   return;
+
+//   // returns remaining days
+// }
+
+// survives() {
+//   return;
+
+//   // return true if RNG give
+// }
+
+// infection() {
+//   // sets days to a range between 6 and 21, setsisInfected to true, infectedToday to true
+// }
+
+// update() {
+//   return;
+// }

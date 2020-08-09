@@ -12,9 +12,13 @@ $("#changeDeathCount").click(function () {
   $("#deathCount").text(changedNumber);
 });
 
-//Website Functions
-function hide() {
-  console.log("HI");
+// Website Functions
+function hide(e) {
+  console.log(e);
   $("#blackBox").hide();
   $("#blackBoxContainer").hide();
 }
+
+// totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
+const game = new Game(5000, 100, 0.2, 5, 50);
+let policyArray = game.getPolicyArray();

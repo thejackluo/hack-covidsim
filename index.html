@@ -5,7 +5,7 @@
 -->
 <html lang="en">
   <head>
-    <title>Home - Jack Luo</title>
+    <title>Home - Covid Simulator</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -31,23 +31,28 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <div id="blackBox" onclick="hide()">
+    <div id="blackBox">
       <div id="blackBoxContianer">
-        <div class="rightObject">
-          <i class="far fa-money-bill-alt imgSize"></i>
-          <div
-            class="rightObjText"
-            style="font-family: 'Recursive', sans-serif;"
-          >
-            3
+        <i class="fa fa-times" aria-hidden="true" onclick="hide(this)"></i>
+        <div
+          style="display: flex; flex-direction: column; text-align: justify;"
+        >
+          <div class="rightObject">
+            <i class="far fa-money-bill-alt imgSize"></i>
+            <div
+              class="rightObjText"
+              style="font-family: 'Recursive', sans-serif;"
+            >
+              3
+            </div>
           </div>
+          <div>
+            Give a universal basic income to low income families [freedom: +10,
+            public opinion: +10, corporate opinion: -15, affects poor]
+            [decreases number of contacts for poor people by 1 per day]
+          </div>
+          <div id="endTurn" class="button">Confirm</div>
         </div>
-        <div>
-          Give a universal basic income to low income families [freedom: +10,
-          public opinion: +10, corporate opinion: -15, affects poor] [decreases
-          number of contacts for poor people by 1 per day]
-        </div>
-        <div id="endTurn" class="button">Confirm</div>
       </div>
     </div>
 
@@ -117,6 +122,19 @@
         <div id="img"></div>
 
         <!--<button class="btn btn-primary">New Game</button>
+        <button id="progressBarAnimation" class="btn btn-secondary">
+          Progress Bar
+        </button>
+        <button id="progressBarAnimation" class="btn btn-secondary">
+          Progress Bar
+        </button>
+        <button id="changeDeathCount" class="btn btn-danger">
+          Change Death Count
+        </button>-->
+      </div>
+    </div>
+    <script src="assets/js/frameworks/jquery.min.js"></script>
+    <script src="assets/js/frameworks/popper.min.js"></script>
         <button id="progressBarAnimation" class="btn btn-secondary">
           Progress Bar
         </button>

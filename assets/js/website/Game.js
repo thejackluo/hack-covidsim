@@ -2,7 +2,13 @@ import { Person } from "./Person";
 import { Policy } from "./Policy";
 
 export class Game {
-  constructor(totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts) {
+  constructor(
+    totalPeople,
+    numPeopleInfected,
+    infectionRate,
+    maxNumOfContacts,
+    action
+  ) {
     // Custom Variables
     // Can set doing start time
     this.totalPeople = totalPeople;
@@ -21,6 +27,7 @@ export class Game {
     this.freedom = 50;
 
     // Variable Data
+    this.action = action;
     this.maxNumOfContacts = maxNumOfContacts;
     this.infectionRate = infectionRate;
 
@@ -32,15 +39,59 @@ export class Game {
     }
 
     this.policyArray;
-    // create all policies here
-    policyArray.push(new Policy("Universal Masks", 3, 10, -5, 0));
-    pol;
+    policyArray.push(
+      createPolicy(
+        "Universal Masks",
+        "Fund the production of masks and make them free for citizens",
+        3,
+        0,
+        10,
+        -5
+      )
+    );
+    policyArray.push(
+      createPolicy(
+        "N-95 Mask Mandate",
+        "Ask population to purchase N-95 masks to slow spread",
+        1,
+        0,
+        5,
+        10
+      )
+    );
+    // this.allPolicies = [
+    //   [
+    //     "Universal Masks",
+    //     "Fund the production of masks and make them free for citizens",
+    //     3,
+    //     10,
+    //     -5,
+    //     0,
+    //   ],
+    //   [
+    //     "N-95 Mask Mandate",
+    //     "Ask population to purchase N-95 masks to slow spread",
+    //     1,
+    //     0,
+    //     5,
+    //     10,
+    //   ],
+    //   [
+    //     "Defence Production Act",
+    //     "Yell at mask production team to speed up mask production rate",
+    //     2,
+    //     0,
+    //     10,
+    //     -10,
+    //   ],
+    // ];
   }
 
   // Game starting
 
   startGame() {
-    createPeople(1000);
+    this.createPeople(1000);
+    this.createAllPolicy();
   }
 
   gameOver() {
@@ -82,8 +133,56 @@ export class Game {
   // Go through a for loop
   // Use a random number generator
 
-  createPolicy(name, publicOpinion, corporateOpinion, freedom) {
-    return new Policy(name, publicOpinion, corporateOpinion, freedom);
+  createPolicy(
+    name,
+    description,
+    cost,
+    publicOpinion,
+    corporateOpinion,
+    freedom
+  ) {
+    return new Policy(
+      name,
+      description,
+      cost,
+      publicOpinion,
+      corporateOpinion,
+      freedom
+    );
+  }
+
+  createAllPolicy() {
+    // create all policies here
+    policyArray.push(
+      new Policy(
+        "Universal Masks",
+        "Fund the production of masks and make them free for citizens",
+        3,
+        10,
+        -5,
+        0
+      )
+    );
+    policyArray.push(
+      new Policy(
+        "N-95 Mask Mandate",
+        "Ask population to purchase N-95 masks to slow spread",
+        1,
+        0,
+        5,
+        10
+      )
+    );
+    policyArray.push(
+      new Policy(
+        "Defence Production Act",
+        "Yell at mask production team to speed up mask production rate",
+        2,
+        0,
+        10,
+        -10
+      )
+    );
   }
 
   // Implementation of Policies

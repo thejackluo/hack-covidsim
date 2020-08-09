@@ -1,0 +1,118 @@
+{
+  "Policy 1": {
+    "Name": "Universal Masks",
+    "Description": "Fund the production of masks and make them free for citizens",
+    "Price": 3,
+    "Freedom": 0,
+    "Public Opinion": 10,
+    "Corperate Opinion": -5
+  },
+  "Policy 2": {
+    "Name": "N-95 Mask Mandate",
+    "Description": "Ask population to purchase N-95 masks to slow spread",
+    "Price": 1,
+    "Freedom": 0,
+    "Public Opinion": 5,
+    "Corperate Opinion": 10
+  },
+  "Policy 3": {
+    "Name": "Defence Production Act",
+    "Description": "Yell at mask production team to speed up mask production rate",
+    "Price": 2,
+    "Freedom": 0,
+    "Public Opinion": 10,
+    "Corperate Opinion": -10
+  },
+  "Policy 4": {
+    "Name": "Botched Presidential Speech",
+    "Description": "Encourage Social Gatherings",
+    "Price": 1,
+    "Freedom": 20,
+    "Public Opinion": 5,
+    "Corperate Opinion": 10
+  },
+  "Policy 5": {
+    "Name": "Means Tested UBI",
+    "Description": "Give a universal basic income to low income families",
+    "Price": 3,
+    "Freedom": 10,
+    "Public Opinion": 10,
+    "Corperate Opinion": -15
+  },
+  "Policy 6": {
+    "Name": "UBI",
+    "Description": "Give a high universal basic income to all families",
+    "Price": 4,
+    "Freedom": 25,
+    "Public Opinion": 20,
+    "Corperate Opinion": -25
+  },
+  "Policy 7": {
+    "Name": "Means Tested UBI",
+    "Description": "Give a universal basic income to low income families",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  "Policy 8": {
+    "Name": "Furlough workers",
+    "Description": "Workers get vacation days off",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  "Policy 9": {
+    "Name": "Money grows on trees",
+    "Description": "Government pays for worker’s salary",
+    "Price": 1,
+    "Freedom": 0,
+    "Public Opinion": 10,
+    "Corperate Opinion": -15
+  },
+  "Policy 10": {
+    "Name": "Halt eviction and foreclosure",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  "Policy 11": {
+    "Name": "Government Unemployment Benefits",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  "Policy 12": {
+    "Name": "Halt eviction and foreclosure",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+}
+
+
+  (2): 
+I love getting vaccinated! (2): Gift covid test kits to hospitals
+[freedom: +0, public opinion: +15, corporate opinion: -10, affects all]
+[increases number contacts per day by 2]
+[lowers chance of spread by 20%]
+Health Insurance but better! (3): Provide free covid healthcare
+[freedom: +0, public opinion: +20, corporate opinion: -10, affects all]
+[increases number contacts per day by 2]
+[lowers chance of spread by 30%]
+divide region into zones with different freedom depending on infection
+Corporate Welfare (2): Give money to corporation bv
+[freedom: +0, public opinion: +0, corporate opinion: +15, affects corporates]
+Mass Ventilator Production (2): Make corporates pay for overpriced ventilators
+[freedom: +0, public opinion: +10, corporate opinion: -20, affects everyone]
+[lowers chance of spread by 30%]
+What’s Privacy? (1): Send a text to each family member about their temperature
+[freedom: -5, public opinion: -5, corporate opinion: +10, affects everyone]
+[lowers chance of spread by 10%]
