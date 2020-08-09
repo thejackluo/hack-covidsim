@@ -31,8 +31,7 @@
   --breakpoint-xl: 1200px;
 }
 
-body
-{
+body {
   padding: 0px;
 }
 
@@ -128,7 +127,7 @@ body
   grid-row: 1/7;
   grid-column: 1/9;
   background-color: var(--yellow);
-  background-image: url("/medias/images/town.jpg");
+  background-image: url('/medias/images/town.jpg');
   background-size: cover;
 }
 
@@ -264,8 +263,7 @@ body
     font-size: 12px;
   }
 
-  #flexContainer
-  {
+  #flexContainer {
     flex-direction: column;
   }
 }
