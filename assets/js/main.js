@@ -144,7 +144,8 @@ class Game {
     numPeopleInfected,
     infectionRate,
     maxNumOfContacts,
-    action
+    action,
+    turns
   ) {
     // Custom Variables
     // Can set doing start time
@@ -167,6 +168,7 @@ class Game {
     this.action = action;
     this.maxNumOfContacts = maxNumOfContacts;
     this.infectionRate = infectionRate;
+    this.turns = turns;
 
     // Array data
     this.personArray = [];
@@ -209,17 +211,17 @@ class Game {
     for (let i = 0; i < this.personArray.length; i++) {
       // This determines the person in the population
       let person = this.personArray[i];
-      // if (person.getIsIncubated()) {
-      //   person.infect();
-      //   person.isIncubated = false;
-      // }
+      if (person.getIsIncubated()) {
+        person.infect();
+        person.isIncubated = false;
+      }
       for (let j = 0; j < this.randomNumber(this.maxNumOfContacts); j++) {
         // This determines who the person he is going to Contact
         let contactedPerson = this.personArray[
           this.randomNumber(this.personArray.length) - 1
         ];
         if (person.getIsInfected() && !contactedPerson.getIsInfected()) {
-          contactedPerson.infect();
+          contactedPerson.isIncubated = true;
         }
       }
     }
@@ -342,14 +344,14 @@ class Person {
     this.survivalRate = 95;
   }
 
-  incubation() {
+  incubate() {
     this.isIncubated = true;
   }
 
   updateSurvivalRate() {}
 
   getIsIncubated() {
-    return this.isInfected;
+    return this.isIncubated;
   }
 
   getIsInfected() {
@@ -431,7 +433,7 @@ class Policy {
 //Regular Functions
 // import { Game } from "website/Game";
 
-const game = new Game(2000, 100, 0.2, 2, 50);
+const game = new Game(2000, 100, 0.2, 1, 50, 5);
 
 $(document).ready(function () {
   create();
@@ -531,6 +533,8 @@ let confirm = () => {
     hide();
   }
 };
+
+function stats() {}
 
 // update = () => {
 //   let policyContainer = document.getElementById("policyHolder");
