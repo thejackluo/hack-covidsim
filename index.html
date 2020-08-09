@@ -133,27 +133,14 @@
         </button>-->
       </div>
     </div>
-    <script>
-      // totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
-      const game = new Game(5000, 100, 0.2, 5, 50);
-      let policyArray = game.getPolicyArray();
-      console.log(policyArray);
-
-      for (var i = 0; i < policyArray.length; i++) {
-        var obj = document.createElement("DIV");
-        obj.className = "policyItem";
-        obj.innerHTML = policyArray[i].name;
-        obj.title = policyArray[i].description;
-        $("#policyHolder").appendChild(obj);
-      }
-    </script>
+    <script></script>
     <script src="assets/js/frameworks/jquery.min.js"></script>
     <script src="assets/js/frameworks/popper.min.js"></script>
     <script src="assets/js/frameworks/bootstrap.min.js"></script>
     <script defer src="assets/js/frameworks/fontawesome-all.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/website/Game.js"></script>
+    <!-- <script src="assets/js/website/Game.js"></script>
     <script src="assets/js/website/Person.js"></script>
-    <script src="assets/js/website/Policy.js"></script>
+    <script src="assets/js/website/Policy.js"></script> -->
   </body>
 </html>
