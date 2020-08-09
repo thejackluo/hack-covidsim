@@ -207,10 +207,15 @@ class Game {
     for (let i = 0; i < this.personArray.length; i++) {
       // This determines the person
       let person = populationArray[j].getPerson();
+      if (person.getIsIncubated()) {
+        person.infect();
+      }
       for (let j = 0; j < person.contactsPerDay; j++) {
         // This determines who the person he is going to Contact
         let contactedPerson = populationArray[this.randomNumber(populationArray.length)];
-        if (person.isInfected) person.infection();
+        if ((person.getIsInfected() || contactedPerson.getIsInfected()) {
+          contactedPerson.incubation();
+        }
       }
     }
   }
@@ -319,12 +324,19 @@ class Person {
     this.isInfected = isInfected;
     this.isWealthy = isWealthy;
     this.isIncubated = isIncubated;
-    this.daysIncubated = 0;
     this.survivalRate = 95;
   }
 
   updateSurvivalRate() {
     
+  }
+
+  getIsIncubated() {
+    return this.isInfected;
+  }
+
+  getIsInfected() {
+    return this.isInfected;
   }
 
   recover = () => {
@@ -435,5 +447,11 @@ for (var i = 0; i < policyArray.length; i++) {
     document.getElementById("popUpDesc").innerHTML = tempObj.description;
     document.getElementById("popUpCost").innerHTML = tempObj.cost;
   };
-  document.getElementById("policyHolder").appendChild(obj);
+  document.getElementById("policyHolder").appendChild(obj); 
+  document.getElementById("confirm").onclick = "confirm(" + obj.policy + ")";
+}
+
+function confirm(e)
+{
+  console.log(e);
 }
