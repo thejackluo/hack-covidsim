@@ -179,6 +179,7 @@ class Game {
     console.log(this.personArray);
 
     this.policyArray = [];
+    this.curedArray = [];
   }
 
   // Game starting
@@ -207,6 +208,9 @@ class Game {
     $(".public-progress").attr("style", `width: ${this.publicOpinion}%`);
     $(".freedom-progress").attr("style", `width: ${this.freedomOpinion}%`);
     $(".corporate-progress").attr("style", `width: ${this.corporateOpinion}%`);
+    if (this.freedomOpinion < 20) {
+      this.gameOver();
+    }
     // Have each person contact another person
     for (let i = 0; i < this.personArray.length; i++) {
       // This determines the person in the population
@@ -224,15 +228,39 @@ class Game {
           contactedPerson.isIncubated = true;
         }
       }
+      if (person.getIsInfected()) {
+        person.numInfectedDays()++;
+      }
+      //After two weeks, person will either die or get cured
+      if (person.numInfectedDays > 2) {
+        let randomNumber = Math.floor(Math.random() * 100 + 1);
+        if (randomNumber <= 5) {
+          person.isDead = true;
+        }else{
+          person.isCured  true;
+        }
+        person.cured();
+      }
     }
     let infectionCount = this.checkInfectionCount();
     $("#infectedCount").text(infectionCount);
+    let deathCount = this.checkDeathCount();
+    $("deathCount").text(deathCount);
   }
 
   checkInfectionCount() {
     let count = 0;
     for (let i = 0; i < this.personArray.length; i++) {
       if (this.personArray[i].getIsInfected()) {
+        count++;
+      }
+    }
+    return count;
+  }
+  checkDeathCount() {
+    let count = 0;
+    for (let i = 0; i < this.personArray.length; i++) {
+      if (this.personArray[i].getIsDead()) {
         count++;
       }
     }
@@ -321,6 +349,11 @@ class Game {
     return this.policyArray;
   }
 
+  getPersonArray() {
+    console.log(this.personArray);
+    return this.personArray;
+  }
+
   // Setter Method
 
   // Helper Methods
@@ -342,14 +375,56 @@ class Person {
     this.isWealthy = isWealthy;
     this.isIncubated = isIncubated;
     this.survivalRate = 95;
+    this.numInfectedDays = 0;
+    this.isDead = false;
+    this.isCured = false;
   }
 
   incubate() {
     this.isIncubated = true;
   }
 
-  updateSurvivalRate() {}
+  incrementInfect() {
+    if (!(probabilityCalculator(this.survivalRate))) {
+      this.isDead = true;
+      this.isInfected = false;
+    }
+    if (numInfectedDays > 7) {
+      this.isCured = true;
+      this.isInfected = false;
+    }
+    numInfectedDays++;
+   
+  }
 
+  updateSurvivalRate() {
+    if (this.isWealthy) {
+      this.survivalRate = 95 - 5 * this.numInfectedDays;
+    } else {
+      this.survivalRate = 95 - 10 * this.numInfectedDays;
+    }
+    
+  }
+
+  infect() {
+    this.isInfected = true;
+  }
+
+  recover() {
+    // How to determine recovery
+    this.isInfected = false;
+  }
+
+  // Optional
+  rich() {
+    this.isWealthy = true;
+  }
+
+  poor() {
+    this.isWealthy = false;
+  }
+
+  // Getter
   getIsIncubated() {
     return this.isIncubated;
   }
@@ -358,20 +433,17 @@ class Person {
     return this.isInfected;
   }
 
-  infect() {
-    this.isInfected = true;
+  getIsDead() {
+    return this.isDead;
   }
 
-  recover() {
-    this.isInfected = false;
+  randomNumber(max) {
+    return Math.floor(Math.random() * max) + 1;
   }
 
-  rich() {
-    this.isWealthy = true;
-  }
-
-  poor() {
-    this.isWealthy = false;
+  probabilityCalculator(percentage) {
+    if (this.randomNumber(100) <= percentage) return true;
+    return false;
   }
 }
 
@@ -433,11 +505,13 @@ class Policy {
 //Regular Functions
 // import { Game } from "website/Game";
 
-const game = new Game(2000, 100, 0.2, 1, 50, 5);
+const game = new Game(2000, 50, 0.005, 1, 50, 5);
 
 $(document).ready(function () {
   create();
   hide();
+  let infectionCount = game.checkInfectionCount();
+  $("#infectedCount").text(infectionCount);
   $("#alertMessageSuccess").hide();
   $("#alertMessageFailure").hide();
   $("#progressBarAnimation").click(function () {
@@ -534,7 +608,13 @@ let confirm = () => {
   }
 };
 
-function stats() {}
+function stats() {
+  let list = game.getPersonArray();
+  console.log(list);
+  for (let i = 0; i < list.length; i++) {
+    console.log(list[i]);
+  }
+}
 
 // update = () => {
 //   let policyContainer = document.getElementById("policyHolder");
