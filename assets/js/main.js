@@ -261,7 +261,7 @@ class Game {
     cost,
     publicOpinion,
     corporateOpinion,
-    freedom
+    freedomOpinion
   ) {
     return new Policy(
       name,
@@ -269,7 +269,7 @@ class Game {
       cost,
       publicOpinion,
       corporateOpinion,
-      freedom
+      freedomOpinion
     );
   }
 
@@ -487,14 +487,15 @@ for (var i = 0; i < policyArray.length; i++) {
   obj.onclick = function (e) {
     show();
     console.log(e);
-    var tempObj = e.path[0];
+    let tempObj = e.path[0];
     document.getElementById("popUpDesc").innerHTML = tempObj.description;
+    document.getElementById("popUpDesc").policy = tempObj.policy;
     document.getElementById("popUpCost").innerHTML = tempObj.cost;
   };
   document.getElementById("policyHolder").appendChild(obj); 
 }
 
-function confirm(e)
+function confirm()
 {
-  console.log(e);
+  let temp = 
 }
