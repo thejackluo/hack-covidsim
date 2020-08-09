@@ -47,14 +47,6 @@
     "Public Opinion": 20,
     "Corperate Opinion": -25
   },
-  "Policy 7": {
-    "Name": "Means Tested UBI",
-    "Description": "Give a universal basic income to low income families",
-    "Price": 2,
-    "Freedom": 10,
-    "Public Opinion": 15,
-    "Corperate Opinion": -15
-  },
   "Policy 8": {
     "Name": "Furlough workers",
     "Description": "Workers get vacation days off",
@@ -95,24 +87,52 @@
     "Public Opinion": 15,
     "Corperate Opinion": -15
   },
+  "Policy 13": {
+    "Name": "I love getting vaccinated!",
+    "Description": "Gift covid test kits to hospitals",
+    "Price": 2,
+    "Freedom": 0,
+    "Public Opinion": 15,
+    "Corperate Opinion": -10
+  },
+  "Policy 14": {
+    "Name": "Health Insurance but better!",
+    "Description": "Provide free covid healthcare",
+    "Price": 3,
+    "Freedom": 0,
+    "Public Opinion": 20,
+    "Corperate Opinion": -10
+  },
+  "Policy 15": {
+    "Name": "Halt eviction and foreclosure",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  "Policy 16": {
+    "Name": "Corporate Welfare",
+    "Description": "Give free money to coperation",
+    "Price": 2,
+    "Freedom": 0,
+    "Public Opinion": 0,
+    "Corperate Opinion": 15
+  },
+  "Policy 17": {
+    "Name": "Mass Ventilator Production",
+    "Description": "Make corporates pay for overpriced ventilators",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 10,
+    "Corperate Opinion": -20
+  },
+  "Policy 18": {
+    "Name": "What’s Privacy?",
+    "Description": "Send a text to each family member about their temperature",
+    "Price": 1,
+    "Freedom": -5,
+    "Public Opinion": 0,
+    "Corperate Opinion": 10
+  }
 }
-
-
-  (2): 
-I love getting vaccinated! (2): Gift covid test kits to hospitals
-[freedom: +0, public opinion: +15, corporate opinion: -10, affects all]
-[increases number contacts per day by 2]
-[lowers chance of spread by 20%]
-Health Insurance but better! (3): Provide free covid healthcare
-[freedom: +0, public opinion: +20, corporate opinion: -10, affects all]
-[increases number contacts per day by 2]
-[lowers chance of spread by 30%]
-divide region into zones with different freedom depending on infection
-Corporate Welfare (2): Give money to corporation bv
-[freedom: +0, public opinion: +0, corporate opinion: +15, affects corporates]
-Mass Ventilator Production (2): Make corporates pay for overpriced ventilators
-[freedom: +0, public opinion: +10, corporate opinion: -20, affects everyone]
-[lowers chance of spread by 30%]
-What’s Privacy? (1): Send a text to each family member about their temperature
-[freedom: -5, public opinion: -5, corporate opinion: +10, affects everyone]
-[lowers chance of spread by 10%]

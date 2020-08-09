@@ -1,3 +1,159 @@
+let allPolicies = {
+  0: {
+    "Name": "Universal Masks",
+    "Description": "Fund the production of masks and make them free for citizens",
+    "Price": 3,
+    "Freedom": 0,
+    "Public Opinion": 10,
+    "Corperate Opinion": -5
+  },
+  1: {
+    "Name": "N-95 Mask Mandate",
+    "Description": "Ask population to purchase N-95 masks to slow spread",
+    "Price": 1,
+    "Freedom": 0,
+    "Public Opinion": 5,
+    "Corperate Opinion": 10
+  },
+  2: {
+    "Name": "Defence Production Act",
+    "Description": "Yell at mask production team to speed up mask production rate",
+    "Price": 2,
+    "Freedom": 0,
+    "Public Opinion": 10,
+    "Corperate Opinion": -10
+  },
+  3: {
+    "Name": "Botched Presidential Speech",
+    "Description": "Encourage Social Gatherings",
+    "Price": 1,
+    "Freedom": 20,
+    "Public Opinion": 5,
+    "Corperate Opinion": 10
+  },
+  4: {
+    "Name": "Means Tested UBI",
+    "Description": "Give a universal basic income to low income families",
+    "Price": 3,
+    "Freedom": 10,
+    "Public Opinion": 10,
+    "Corperate Opinion": -15
+  },
+  5: {
+    "Name": "UBI",
+    "Description": "Give a high universal basic income to all families",
+    "Price": 4,
+    "Freedom": 25,
+    "Public Opinion": 20,
+    "Corperate Opinion": -25
+  },
+  6: {
+    "Name": "Furlough workers",
+    "Description": "Workers get vacation days off",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  7: {
+    "Name": "Money grows on trees",
+    "Description": "Government pays for worker’s salary",
+    "Price": 1,
+    "Freedom": 0,
+    "Public Opinion": 10,
+    "Corperate Opinion": -15
+  },
+  8: {
+    "Name": "Halt eviction and foreclosure",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  9: {
+    "Name": "Government Unemployment Benefits",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  10: {
+    "Name": "Halt eviction and foreclosure",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  11: {
+    "Name": "I love getting vaccinated!",
+    "Description": "Gift covid test kits to hospitals",
+    "Price": 2,
+    "Freedom": 0,
+    "Public Opinion": 15,
+    "Corperate Opinion": -10
+  },
+ 12: {
+    "Name": "Health Insurance but better!",
+    "Description": "Provide free covid healthcare",
+    "Price": 3,
+    "Freedom": 0,
+    "Public Opinion": 20,
+    "Corperate Opinion": -10
+  },
+  13: {
+    "Name": "Halt eviction and foreclosure",
+    "Description": "Stop government from deporting people",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 15,
+    "Corperate Opinion": -15
+  },
+  14: {
+    "Name": "Corporate Welfare",
+    "Description": "Give free money to coperation",
+    "Price": 2,
+    "Freedom": 0,
+    "Public Opinion": 0,
+    "Corperate Opinion": 15
+  },
+  15: {
+    "Name": "Mass Ventilator Production",
+    "Description": "Make corporates pay for overpriced ventilators",
+    "Price": 2,
+    "Freedom": 10,
+    "Public Opinion": 10,
+    "Corperate Opinion": -20
+  },
+  16: {
+    "Name": "What’s Privacy?",
+    "Description": "Send a text to each family member about their temperature",
+    "Price": 1,
+    "Freedom": -5,
+    "Public Opinion": 0,
+    "Corperate Opinion": 10
+  },
+  17: {
+    "Name": "Close Borders",
+    "Description": "Ban all travel in and outside",
+    "Price": 4,
+    "Freedom": -15,
+    "Public Opinion": -25,
+    "Corperate Opinion": -10
+  },
+  18: {
+    "Name": "",
+    "Description": "Ban all travel in and outside",
+    "Price": 4,
+    "Freedom": -15,
+    "Public Opinion": -25,
+    "Corperate Opinion": -10
+  },
+};
+
+
 class Game {
   constructor(
     totalPeople,
@@ -29,59 +185,14 @@ class Game {
     this.infectionRate = infectionRate;
 
     // Array data
-    this.personArray;
+    this.personArray = [];
     for (let i = 0; i < totalPeople; i++) {
       let person = this.createPerson(35, 1, 50);
       this.personArray.push(person);
     }
+    console.log(this.personArray);
 
-    this.policyArray;
-    policyArray.push(
-      this.createPolicy(
-        "Universal Masks",
-        "Fund the production of masks and make them free for citizens",
-        3,
-        0,
-        10,
-        -5
-      )
-    );
-    policyArray.push(
-      this.createPolicy(
-        "N-95 Mask Mandate",
-        "Ask population to purchase N-95 masks to slow spread",
-        1,
-        0,
-        5,
-        10
-      )
-    );
-    // this.allPolicies = [
-    //   [
-    //     "Universal Masks",
-    //     "Fund the production of masks and make them free for citizens",
-    //     3,
-    //     10,
-    //     -5,
-    //     0,
-    //   ],
-    //   [
-    //     "N-95 Mask Mandate",
-    //     "Ask population to purchase N-95 masks to slow spread",
-    //     1,
-    //     0,
-    //     5,
-    //     10,
-    //   ],
-    //   [
-    //     "Defence Production Act",
-    //     "Yell at mask production team to speed up mask production rate",
-    //     2,
-    //     0,
-    //     10,
-    //     -10,
-    //   ],
-    // ];
+    this.policyArray = [];
   }
 
   // Game starting
@@ -96,6 +207,10 @@ class Game {
   }
 
   incrementTime(time) {
+    policyArray
+    // Updates all policies that is approved
+    // Do an infection
+    // 
     for (let i = 0; i < time; i++) {
       for (let j = 0; j < this.personArray.length; j++) {
         // This determines the person
@@ -114,8 +229,8 @@ class Game {
 
   createPerson(educationPercentage, infectionPercentage, wealthyPercentage) {
     // False is default
-    let isEducated, isInfected, isWealthy, incubation;
-    isEducated = isInfected = isWealthy = incubation = false;
+    let isEducated, isInfected, isWealthy, isIncubated;
+    isEducated = isInfected = isWealthy = isIncubated = false;
 
     // Determine person classification
     if (this.probabilityCalculator(educationPercentage)) isEducated = true;
@@ -123,7 +238,7 @@ class Game {
     if (this.probabilityCalculator(wealthyPercentage)) isWealthy = true;
 
     // Add person to person Array
-    let person = new Person(isEducated, isInfected, isWealthy, incubation);
+    let person = new Person(isEducated, isInfected, isWealthy, isIncubated);
     this.personArray.push(person);
   }
   // Create an Array of people
@@ -149,37 +264,21 @@ class Game {
   }
 
   createAllPolicy() {
+    for (let i = 0; i < Object.keys(allPolicies).length; i++) {
+      let policy = this.createPolicy(
+        allPolicies[i].Name,
+        allPolicies[i].Description,
+        allPolicies[i].Price,
+        allPolicies[i]["Public Opinion"],
+        allPolicies[i]["Corperate Opinion"],
+        allPolicies[i].Freedom
+      );    
+      this.policyArray.push(policy);
+    }
+  
+    
     // create all policies here
-    this.policyArray.push(
-      new Policy(
-        "Universal Masks",
-        "Fund the production of masks and make them free for citizens",
-        3,
-        10,
-        -5,
-        0
-      )
-    );
-    this.policyArray.push(
-      new Policy(
-        "N-95 Mask Mandate",
-        "Ask population to purchase N-95 masks to slow spread",
-        1,
-        0,
-        5,
-        10
-      )
-    );
-    this.policyArray.push(
-      new Policy(
-        "Defence Production Act",
-        "Yell at mask production team to speed up mask production rate",
-        2,
-        0,
-        10,
-        -10
-      )
-    );
+    console.log(policyArray);
   }
 
   // Implementation of Policies
@@ -224,54 +323,37 @@ class Game {
 }
 
 class Person {
+  // 
   constructor(isEducated, isInfected, isWealthy, isIncubated) {
     this.isEducated = isEducated;
     this.isInfected = isInfected;
     this.isWealthy = isWealthy;
     this.isIncubated = isIncubated;
+    this.daysIncubated = 0;
+    this.survivalRate = 95;
   }
 
-  incubation = () => (this.isIncubated = true);
-  recover = () => (this.isInfected = false);
-  rich = () => (this.isWealthy = true);
-  poor = () => (this.isWealthy = false);
+  updateSurvivalRate() {1p000
+    
+  }
+
+  recover = () => {
+    this.isInfected = false
+  };
+
+  rich = () => {
+    this.isWealthy = true
+  };
+
+  poor = () => {
+    this.isWealthy = false
+  };
+
+  incubation = () => {
+    this.incubation = true;
+        
+  }
 }
-
-// getInfected() {
-//   return this.isInfected;
-//
-// returns if is infected
-// }
-
-// getEducated() {
-//   return;
-
-//   // returns if is educated
-// }
-
-// incrementDay() {
-//   // decrease day, infectedToday = false
-// }
-
-// remainingDays() {
-//   return;
-
-//   // returns remaining days
-// }
-
-// survives() {
-//   return;
-
-//   // return true if RNG give
-// }
-
-// infection() {
-//   // sets days to a range between 6 and 21, setsisInfected to true, infectedToday to true
-// }
-
-// update() {
-//   return;
-// }
 
 class Policy {
   constructor(
@@ -335,18 +417,32 @@ $("#changeDeathCount").click(function () {
 function hide(e) {
   console.log(e);
   $("#blackBox").hide();
-  $("#blackBoxContainer").hide();
+}
+
+function show()
+{
+  $("#blackBox").show();
 }
 
 // totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
+hide();
 const game = new Game(5000, 100, 0.2, 5, 50);
 let policyArray = game.getPolicyArray();
+game.createAllPolicy();
 console.log(policyArray);
 
 for (var i = 0; i < policyArray.length; i++) {
   var obj = document.createElement("DIV");
   obj.className = "policyItem";
   obj.innerHTML = policyArray[i].name;
-  obj.title = policyArray[i].description;
-  $("#policyHolder").appendChild(obj);
+  obj.description = policyArray[i].description;
+  obj.cost = policyArray[i].cost;
+  obj.onclick = function (e) {
+    show();
+    console.log(e);
+    var tempObj = e.path[0];
+    document.getElementById("popUpDesc").innerHTML = tempObj.description;
+    document.getElementById("popUpCost").innerHTML = tempObj.cost;
+  };
+  document.getElementById("policyHolder").appendChild(obj);
 }

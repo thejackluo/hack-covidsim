@@ -47,7 +47,7 @@
   background-color: white;
   width: 350px;
   border-radius: 10px;
-  padding: 40px;
+  padding:  30px 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -90,7 +90,9 @@
 
 .policyItem {
   width: 100%;
-  height: 50px;
+  min-height: 50px;
+  height: auto;
+  padding: 10px;
   background-color: var(--green);
   border-radius: 10px;
   font-size: 18px;
@@ -99,8 +101,12 @@
   align-items: center;
   font-family: "Recursive", sans-serif;
   justify-content: center;
+  margin-top: 4%;
 }
 
+.policyItem:hover {
+  cursor: pointer;
+}
 #infoBar {
   grid-row: 7/-1;
   grid-column: 1/9;

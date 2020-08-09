@@ -42,16 +42,19 @@
             <div
               class="rightObjText"
               style="font-family: 'Recursive', sans-serif;"
+              id="popUpCost"
             >
               3
             </div>
           </div>
-          <div>
+          <div id="popUpDesc">
             Give a universal basic income to low income families [freedom: +10,
             public opinion: +10, corporate opinion: -15, affects poor]
             [decreases number of contacts for poor people by 1 per day]
           </div>
-          <div id="endTurn" class="button">Confirm</div>
+          <div id="endTurn" class="button" style="margin-top: 10px;">
+            Confirm
+          </div>
         </div>
       </div>
     </div>
@@ -69,29 +72,29 @@
             </div>
           </div>
 
-          <div id="policyHolder">
-            <div class="policyItem">Means Tested UBI</div>
-          </div>
+          <div id="policyHolder"></div>
 
-          <div id="endTurn" class="button">End Turn</div>
+          <div id="endTurn" class="button" style="margin-top: 10px;">
+            End Turn
+          </div>
         </div>
 
         <div id="infoBar">
           <div id="rightHolder">
             <div class="rightObject">
               <i class="fas fa-skull-crossbones imgSize"></i>
-              <div class="rightObjText" id="deathCount">50</div>
+              <div class="rightObjText" id="deathCount">0</div>
             </div>
             <div class="rightObject">
               <i class="fas fa-biohazard imgSize"></i>
-              <div class="rightObjText">1000</div>
+              <div class="rightObjText" id="infectedCo">0</div>
             </div>
           </div>
 
           <div id="leftHolder">
             <div class="progressItem">
               <i class="fas fa-unlink progressImg"></i>
-              <div class="progress game-progress">
+              <div class="progress game-progress freedom-progress">
                 <div
                   class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
                   style="width: 70%;"
@@ -100,7 +103,7 @@
             </div>
             <div class="progressItem">
               <i class="fas fa-globe-americas progressImg"></i>
-              <div class="progress game-progress">
+              <div class="progress game-progress public-progress">
                 <div
                   class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
                   style="width: 70%;"
@@ -109,9 +112,12 @@
             </div>
             <div class="progressItem">
               <i class="fas fa-building progressImg"></i>
-              <div class="progress game-progress">
                 <div
                   class="progress-bar bg-primary progress-bar-striped progress-bar-animated"
+                  style="width: 70%;"
+                ></div>
+            </div>
+          </div>  class="progress-bar bg-primary progress-bar-striped progress-bar-animated"
                   style="width: 70%;"
                 ></div>
               </div>
