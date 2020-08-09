@@ -1,4 +1,4 @@
-export class Policy {
+class Policy {
   constructor(
     name,
     description,

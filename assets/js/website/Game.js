@@ -1,7 +1,7 @@
-import { Person } from "./Person";
-import { Policy } from "./Policy";
+// import { Person } from "./Person";
+// import { Policy } from "./Policy";
 
-export class Game {
+class Game {
   constructor(
     totalPeople,
     numPeopleInfected,

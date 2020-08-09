@@ -1,4 +1,4 @@
-export class Person {
+class Person {
   constructor(isEducated, isInfected, isWealthy, incubation) {
     this.isEducated = isEducated;
     this.isInfected = isInfected;

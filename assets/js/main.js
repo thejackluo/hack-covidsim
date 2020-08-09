@@ -1,4 +1,6 @@
 //Regular Functions
+// import { Game } from "website/Game";
+
 $("#progressBarAnimation").click(function () {
   // $(".progress-bar").addClass("progress-bar-animation");
   let width = prompt("What percentage do you change he progress bar to");
@@ -18,7 +20,3 @@ function hide(e) {
   $("#blackBox").hide();
   $("#blackBoxContainer").hide();
 }
-
-// totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
-const game = new Game(5000, 100, 0.2, 5, 50);
-let policyArray = game.getPolicyArray();
