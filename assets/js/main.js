@@ -225,7 +225,7 @@ class Game {
       }
     }
     let infectionCount = this.checkInfectionCount();
-    $("infectedCount").text(infectionCount);
+    $("#infectedCount").text(infectionCount);
   }
 
   checkInfectionCount() {
@@ -434,9 +434,12 @@ class Policy {
 
 const game = new Game(500, 100, 0.2, 5, 50);
 
-$(document).ready(function () {
-  $("#alertMessage").hide();
+create();
+hide();
+$("#alertMessageSuccess").hide();
+$("#alertMessageFailure").hide();
 
+$(document).ready(function () {
   $("#progressBarAnimation").click(function () {
     // $(".progress-bar").addClass("progress-bar-animation");
     let width = prompt("What percentage do you change he progress bar to");
@@ -456,17 +459,14 @@ $(document).ready(function () {
 });
 
 // Website Functions
-function hide(e) {
+let hide = (e) => {
   console.log(e);
   $("#blackBox").hide();
-}
+};
 
-function show() {
-  $("#blackBox").show();
-}
+let show = () => $("#blackBox").show();
 
 // totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
-hide();
 let policyArray = game.getPolicyArray();
 game.createAllPolicy();
 console.log(policyArray);
@@ -495,6 +495,7 @@ create = () => {
 let confirm = () => {
   let temp = document.getElementById("popUpDesc").policy;
   let ser = document.getElementById("popUpDesc").a;
+  console.log(ser);
   console.log(temp);
 
   // if (temp.getImplementation()) {
@@ -507,7 +508,7 @@ let confirm = () => {
   if (Number.parseInt(action.textContent) - temp.cost > 0) {
     action.textContent = Number.parseInt(action.textContent) - temp.cost;
     temp.toggleImplementation();
-    ser.parentNode.removeChild(ser);
+    document.getElementById("policyHolder").removeChild(ser);
     $("#alertMessageSuccess").html(
       `<strong>Success!</strong> You have purchased ${temp.Name} for ${temp.cost} actions.`
     );
@@ -547,5 +548,3 @@ let confirm = () => {
 //     document.getElementById("policyHolder").appendChild(obj);
 //   }
 // };
-
-create();
