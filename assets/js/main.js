@@ -202,7 +202,7 @@ class Game {
     }
     // Change the progress bars
     $(".public-progress").attr("style", `width: ${this.publicOpinion}%`);
-    $(".freedom-progress").attr("style", `width: ${thiss.freedomOpinion}%`);
+    $(".freedom-progress").attr("style", `width: ${this.freedomOpinion}%`);
     $(".corporate-progress").attr("style", `width: ${this.corporateOpinion}%`);
     // Have each person contact another person
     for (let i = 0; i < this.personArray.length; i++) {
@@ -379,7 +379,7 @@ class Policy {
     cost,
     publicOpinion,
     corporateOpinion,
-    freedom
+    freedom,
   ) {
     this.name = name;
     this.description = description;
@@ -387,6 +387,19 @@ class Policy {
     this.publicOpinion = publicOpinion;
     this.corporateOpinion = corporateOpinion;
     this.freedom = freedom;
+    this.implementation = false;
+  }
+
+  getImplementation() {
+    return this.implementation;
+  }
+
+  toggleImplementation() {
+    if (getImplementation()) {
+      this.implementation = false;
+    } else {
+      this.implementation = true;
+    }
   }
 
   getName() {
@@ -417,7 +430,7 @@ class Policy {
 //Regular Functions
 // import { Game } from "website/Game";
 
-$(document).ready(function(){
+$(document).ready(function() {
   $("#progressBarAnimation").click(function () {
     // $(".progress-bar").addClass("progress-bar-animation");
     let width = prompt("What percentage do you change he progress bar to");
@@ -431,7 +444,13 @@ $(document).ready(function(){
     $("#deathCount").text(changedNumber);
   });
 
-  $("")
+  $("#endTurn").click(function() {
+    game.incrementTime();
+  });
+});
+  
+
+  
   
   // Website Functions
   function hide(e) {
@@ -444,7 +463,6 @@ $(document).ready(function(){
   }
 
   
-});
 
 
 // totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
@@ -467,13 +485,7 @@ for (var i = 0; i < policyArray.length; i++) {
     var tempObj = e.path[0];
     document.getElementById("popUpDesc").innerHTML = tempObj.description;
     document.getElementById("popUpCost").innerHTML = tempObj.cost;
-    document.getElementById("confirm").onclick = "confirm(" + tempObj.policy + ")";
+    document.getElementById("confirm")
   };
   document.getElementById("policyHolder").appendChild(obj); 
-}
-
-function confirm(e)
-{
-  console.log("HI");
-  console.log(e);
 }
