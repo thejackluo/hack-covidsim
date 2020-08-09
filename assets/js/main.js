@@ -182,7 +182,6 @@ class Game {
   // Game starting
 
   startGame() {
-    this.createPeople(1000);
     this.createAllPolicy();
   }
 
@@ -201,11 +200,13 @@ class Game {
        this.freedom += policyArray[i].getFreedom;
       }
     }
+    // Change the progress bars
     $(".public-progress").attr("style", `width: ${this.publicOpinion}%`);
     $(".freedom-progress").attr("style", `width: ${thiss.freedomOpinion}%`);
     $(".corporate-progress").attr("style", `width: ${this.corporateOpinion}%`);
+    // Have each person contact another person
     for (let i = 0; i < this.personArray.length; i++) {
-      // This determines the person
+      // This determines the person in the population
       let person = populationArray[j].getPerson();
       if (person.getIsIncubated()) {
         person.infect();
@@ -213,11 +214,26 @@ class Game {
       for (let j = 0; j < person.contactsPerDay; j++) {
         // This determines who the person he is going to Contact
         let contactedPerson = populationArray[this.randomNumber(populationArray.length)];
-        if ((person.getIsInfected() || contactedPerson.getIsInfected()) {
+        if (person.getIsInfected() && !(contactedPerson.getIsInfected())) {
           contactedPerson.incubation();
+        } else if (contactedPerson.getIsInfected() && !(person.getIsInfected())) {
+          person.infect();
         }
       }
     }
+    let infectionCount = checkInfectionCount()
+    $("infectedCount").text(infectionCount);
+  }
+
+  checkInfectionCount() {
+    let count = 0;
+    for (let i = 0; i < this.personArray.length; i++) {
+      if (this.personArray[i].getIsInfected()) {
+        count++;
+      }
+    }
+    return count;
+
   }
 
   // Creations
@@ -234,7 +250,6 @@ class Game {
 
     // Add person to person Array
     let person = new Person(isEducated, isInfected, isWealthy, isIncubated);
-    this.personArray.push(person);
   }
   // Create an Array of people
   // Go through a for loop
@@ -312,7 +327,7 @@ class Game {
   }
 
   probabilityCalculator(percentage) {
-    if (this.randomNumber(percentage) <= 100) return true;
+    if (this.randomNumber(100) <= percentage) return true;
     return false;
   }
 }
@@ -402,33 +417,39 @@ class Policy {
 //Regular Functions
 // import { Game } from "website/Game";
 
-$("#progressBarAnimation").click(function () {
-  // $(".progress-bar").addClass("progress-bar-animation");
-  let width = prompt("What percentage do you change he progress bar to");
-  $(".progress-bar").attr("style", `width: ${width}%`);
+$(document).ready(function(){
+  $("#progressBarAnimation").click(function () {
+    // $(".progress-bar").addClass("progress-bar-animation");
+    let width = prompt("What percentage do you change he progress bar to");
+    $(".progress-bar").attr("style", `width: ${width}%`);
+  });
+  
+  // let deathCount = new CountUp($("#deathCount"), 22, 99.99);
+  
+  $("#changeDeathCount").click(function () {
+    let changedNumber = prompt("What do you want to change the death count to");
+    $("#deathCount").text(changedNumber);
+  });
+
+  $("")
+  
+  // Website Functions
+  function hide(e) {
+    console.log(e);
+    $("#blackBox").hide();
+  }
+  
+  function show() {
+    $("#blackBox").show();
+  }
+
+  
 });
 
-// let deathCount = new CountUp($("#deathCount"), 22, 99.99);
-
-$("#changeDeathCount").click(function () {
-  let changedNumber = prompt("What do you want to change the death count to");
-  $("#deathCount").text(changedNumber);
-});
-
-// Website Functions
-function hide(e) {
-  console.log(e);
-  $("#blackBox").hide();
-}
-
-function show()
-{
-  $("#blackBox").show();
-}
 
 // totalPeople, numPeopleInfected, infectionRate, maxNumOfContacts, action;
 hide();
-const game = new Game(5000, 100, 0.2, 5, 50);
+const game = new Game(500, 100, 0.2, 5, 50);
 let policyArray = game.getPolicyArray();
 game.createAllPolicy();
 console.log(policyArray);
@@ -446,12 +467,13 @@ for (var i = 0; i < policyArray.length; i++) {
     var tempObj = e.path[0];
     document.getElementById("popUpDesc").innerHTML = tempObj.description;
     document.getElementById("popUpCost").innerHTML = tempObj.cost;
+    document.getElementById("confirm").onclick = "confirm(" + tempObj.policy + ")";
   };
   document.getElementById("policyHolder").appendChild(obj); 
-  document.getElementById("confirm").onclick = "confirm(" + obj.policy + ")";
 }
 
 function confirm(e)
 {
+  console.log("HI");
   console.log(e);
 }

@@ -305,4 +305,7 @@
   background-color: yellow;
 }
 
-.buttonA:hob
+.buttonA:hover
+{
+  cursor: pointer;
+}
