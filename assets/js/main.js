@@ -120,19 +120,21 @@ let allPolicies = {
   },
   13: {
     Name: "Mass Ventilator Production",
-    Description: "Funds production of ventiators for ",
+    Description:
+      "Funds production of ventiators for hospitals. Significantly increases survival rates of citizens and increases freedom / public opinion.",
     Price: 3,
     Freedom: 10,
     "Public Opinion": 10,
     "Corperate Opinion": 10,
   },
   14: {
-    Name: "What’s Privacy?",
-    Description: "Send a text to each family member about their temperature",
+    Name: "Covid Tracing",
+    Description:
+      "Contact familty members and contacted people of infected indivisuals to prevent community outbreaks of covid. Lowers freedom but increases public opinion.",
     Price: 1,
-    Freedom: -5,
-    "Public Opinion": 0,
-    "Corperate Opinion": 10,
+    Freedom: -10,
+    "Public Opinion": 10,
+    "Corperate Opinion": 0,
   },
 };
 
@@ -191,7 +193,6 @@ class Game {
     this.publicOpinion = 50;
     this.corporateOpinion = 50;
     this.freedomOpinion = 50;
-    this.policyArray[2].toggleImplementation();
 
     for (let i = 0; i < this.policyArray.length; i++) {
       if (this.policyArray[i].getImplementation()) {
@@ -485,6 +486,7 @@ create = () => {
       let tempObj = e.path[0];
       document.getElementById("popUpDesc").innerHTML = tempObj.description;
       document.getElementById("popUpDesc").policy = tempObj.policy;
+      document.getElementById("popUpDesc").a = tempObj;
       document.getElementById("popUpCost").innerHTML = tempObj.cost;
     };
     document.getElementById("policyHolder").appendChild(obj);
@@ -492,6 +494,7 @@ create = () => {
 };
 let confirm = () => {
   let temp = document.getElementById("popUpDesc").policy;
+  let ser = document.getElementById("popUpDesc").a;
   console.log(temp);
 
   // if (temp.getImplementation()) {
@@ -499,42 +502,50 @@ let confirm = () => {
   // } else {
   //   temp.setAttribute("style", "background-color: var(--red);");
   // }
-  update();
+  // update();
   let action = document.getElementById("actionCurrency");
   if (Number.parseInt(action.textContent) - temp.cost > 0) {
     action.textContent = Number.parseInt(action.textContent) - temp.cost;
     temp.toggleImplementation();
+    ser.parentNode.removeChild(ser);
+    $("#alertMessageSuccess").html(
+      `<strong>Success!</strong> You have purchased ${temp.Name} for ${temp.cost} actions.`
+    );
+    $("#alertMessageSuccess").slideDown();
+    setTimeout(function () {
+      $("#alertMessageSuccess").slideUp();
+    }, 3000);
     hide();
   } else {
-    $("#alertMessage").slideDown();
+    $("#alertMessageFailure").slideDown();
     setTimeout(function () {
-      $("#alertMessage").slideUp();
-    }, 2000);
+      $("#alertMessageFailure").slideUp();
+    }, 3000);
     hide();
   }
 };
 
-update = () => {
-  let policyContainer = document.getElementById("policyHolder");
-  policyContainer.innerHTML = "";
-  for (let i = 0; i < policyArray.length; i++) {
-    let obj = document.createElement("DIV");
-    obj.className = "policyItem";
-    obj.innerHTML = policyArray[i].name;
-    obj.description = policyArray[i].description;
-    obj.cost = policyArray[i].cost;
-    obj.policy = policyArray[i];
+// update = () => {
+//   let policyContainer = document.getElementById("policyHolder");
+//   policyContainer.innerHTML = "";
+//   for (let i = 0; i < policyArray.length; i++) {
+//     let obj = document.createElement("DIV");
+//     obj.className = "policyItem";
+//     obj.innerHTML = policyArray[i].name;
+//     obj.description = policyArray[i].description;
+//     obj.cost = policyArray[i].cost;
+//     obj.policy = policyArray[i];
 
-    obj.onclick = function (e) {
-      show();
-      console.log(e);
-      let tempObj = e.path[0];
-      document.getElementById("popUpDesc").innerHTML = tempObj.description;
-      document.getElementById("popUpDesc").policy = tempObj.policy;
-      document.getElementById("popUpCost").innerHTML = tempObj.cost;
-    };
-    document.getElementById("policyHolder").appendChild(obj);
-  }
-};
+//     obj.onclick = function (e) {
+//       show();
+//       console.log(e);
+//       let tempObj = e.path[0];
+//       document.getElementById("popUpDesc").innerHTML = tempObj.description;
+//       document.getElementById("popUpDesc").policy = tempObj.policy;
+//       document.getElementById("popUpCost").innerHTML = tempObj.cost;
+//     };
+//     document.getElementById("policyHolder").appendChild(obj);
+//   }
+// };
 
 create();

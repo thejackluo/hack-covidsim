@@ -93,7 +93,7 @@
   min-height: 50px;
   height: auto;
   padding: 10px;
-  background-color: var(--red);
+  background-color: var(--green);
   border-radius: 10px;
   font-size: 18px;
   color: blck;
@@ -122,7 +122,7 @@
   grid-row: 1/7;
   grid-column: 1/9;
   background-color: var(--yellow);
-  background-image: url("/medias/images/town.jpg");
+  background-image: url("medias/images/town.jpg");
   background-size: cover;
 }
 
