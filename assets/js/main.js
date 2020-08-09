@@ -64,12 +64,12 @@ let allPolicies = {
     "Corperate Opinion": -15
   },
   8: {
-    "Name": "Halt eviction and foreclosure",
-    "Description": "Stop government from deporting people",
-    "Price": 2,
-    "Freedom": 10,
-    "Public Opinion": 15,
-    "Corperate Opinion": -15
+    "Name": "Close Borders",
+    "Description": "Ban all travel in and outside",
+    "Price": 4,
+    "Freedom": -15,
+    "Public Opinion": -20,
+    "Corperate Opinion": -10
   },
   9: {
     "Name": "Government Unemployment Benefits",
@@ -135,22 +135,6 @@ let allPolicies = {
     "Public Opinion": 0,
     "Corperate Opinion": 10
   },
-  17: {
-    "Name": "Close Borders",
-    "Description": "Ban all travel in and outside",
-    "Price": 4,
-    "Freedom": -15,
-    "Public Opinion": -25,
-    "Corperate Opinion": -10
-  },
-  18: {
-    "Name": "",
-    "Description": "Ban all travel in and outside",
-    "Price": 4,
-    "Freedom": -15,
-    "Public Opinion": -25,
-    "Corperate Opinion": -10
-  },
 };
 
 
@@ -206,7 +190,7 @@ class Game {
     alert("You lose!");
   }
 
-  incrementTime(time) {
+  incrementTime() {
     for (let i = 0; i < policyArray.length; i++) {
       this.publicOpinion = 50;
       this.corporateOpinion = 50;
@@ -217,19 +201,16 @@ class Game {
        this.freedom += policyArray[i].getFreedom;
       }
     }
-    $(".public-progress").attr("style", "width: ${this.publicOpinion}%");
-   $(".freedom-progress").attr("style", "width: ${thiss.freedomOpinion}%");
-   $(".corporate-progress").attr("style", "width: ${this.corporateOpinion}%");
-    for (let i = 0; i < time; i++) {
-      for (let j = 0; j < this.personArray.length; j++) {
-        // This determines the person
-        let person = populationArray[j].getPerson();
-        for (let k = 0; k < person.contactsPerDay; k++) {
-          // This determines who the person he is going to Contact
-          let contactedPerson =
-            populationArray[Math.floor(Math.random() * populationArray.length)];
-          if (person.isInfected) person.infection();
-        }
+    $(".public-progress").attr("style", `width: ${this.publicOpinion}%`);
+    $(".freedom-progress").attr("style", `width: ${thiss.freedomOpinion}%`);
+    $(".corporate-progress").attr("style", `width: ${this.corporateOpinion}%`);
+    for (let i = 0; i < this.personArray.length; i++) {
+      // This determines the person
+      let person = populationArray[j].getPerson();
+      for (let j = 0; j < person.contactsPerDay; j++) {
+        // This determines who the person he is going to Contact
+        let contactedPerson = populationArray[this.randomNumber(populationArray.length)];
+        if (person.isInfected) person.infection();
       }
     }
   }
