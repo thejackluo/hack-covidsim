@@ -216,12 +216,12 @@ class Game {
       for (let j = 0; j < this.randomNumber(this.maxNumOfContacts); j++) {
         // This determines who the person he is going to Contact
         let contactedPerson = this.personArray[
-          this.randomNumber(personArray.length)
+          this.randomNumber(this.personArray.length)
         ];
         if (person.getIsInfected() && !contactedPerson.getIsInfected()) {
           contactedPerson.incubation();
         } else if (contactedPerson.getIsInfected() && !person.getIsInfected()) {
-          person.infect();
+          person.incubation();
         }
       }
     }
@@ -354,25 +354,25 @@ class Person {
     return this.isInfected;
   }
 
-  infect = () => {
+  infect() {
     this.isInfected = true;
-  };
+  }
 
-  recover = () => {
+  recover() {
     this.isInfected = false;
-  };
+  }
 
-  rich = () => {
+  rich() {
     this.isWealthy = true;
-  };
+  }
 
-  poor = () => {
+  poor() {
     this.isWealthy = false;
-  };
+  }
 
-  incubation = () => {
+  incubation() {
     this.incubation = true;
-  };
+  }
 }
 
 class Policy {
@@ -504,7 +504,7 @@ let confirm = () => {
   // }
   // update();
   let action = document.getElementById("actionCurrency");
-  if (Number.parseInt(action.textContent) - temp.cost > 0) {
+  if (Number.parseInt(action.textContent) - temp.cost >= 0) {
     action.textContent = Number.parseInt(action.textContent) - temp.cost;
     temp.toggleImplementation();
 
@@ -521,11 +521,10 @@ let confirm = () => {
     let list = document.getElementsByClassName("policyItem");
     console.log(list);
 
-    for(let i = 0; i < list.size(); i++)
-    {
-      if(list[i].cost == 3)
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].cost > Number.parseInt(action.textContent))
+        list[i].style.backgroundColor = "#dc3545";
     }
-
   } else {
     $("#alertMessageFailure").slideDown();
     setTimeout(function () {
