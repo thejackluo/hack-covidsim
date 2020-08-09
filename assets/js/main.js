@@ -7,6 +7,9 @@ let allPolicies = {
     Freedom: 0,
     "Public Opinion": 10,
     "Corperate Opinion": -5,
+    "Infection Rate": -30,
+    "Num Of Contacts": -1,
+    "Survival Rate": 0
   },
   1: {
     Name: "N-95 Mask Mandate",
@@ -16,6 +19,9 @@ let allPolicies = {
     Freedom: 0,
     "Public Opinion": 5,
     "Corperate Opinion": 0,
+    "Infection Rate": -30,
+    "Num Of Contacts": -1,
+    "Survival Rate": 1
   },
   2: {
     Name: "Defence Production Act",
@@ -25,6 +31,8 @@ let allPolicies = {
     Freedom: 0,
     "Public Opinion": 10,
     "Corperate Opinion": -20,
+    "Infection Rate": -20,
+    "Num Of Contacts": -1,
   },
   3: {
     Name: "Botched Presidential Speech",
@@ -34,6 +42,9 @@ let allPolicies = {
     Freedom: 20,
     "Public Opinion": 5,
     "Corperate Opinion": 0,
+    "Infection Rate": 0,
+    "Num Of Contacts": 1,
+    "Survival Rate": 0
   },
   4: {
     Name: "Means Tested UBI",
@@ -43,6 +54,9 @@ let allPolicies = {
     Freedom: 10,
     "Public Opinion": 10,
     "Corperate Opinion": -5,
+    "Infection Rate": 0,
+    "Num Of Contacts": -1,
+    "Survival Rate": 0
   },
   5: {
     Name: "UBI",
@@ -52,6 +66,8 @@ let allPolicies = {
     Freedom: 25,
     "Public Opinion": 20,
     "Corperate Opinion": -10,
+    "Num Of Contacts": -2,
+    "Survival Rate": 0
   },
   6: {
     Name: "Furlough Workers",
@@ -61,6 +77,8 @@ let allPolicies = {
     Freedom: 10,
     "Public Opinion": 15,
     "Corperate Opinion": -15,
+    "Num Of Contacts": 0,
+    "Survival Rate": 0
   },
   7: {
     Name: "Unemployment Benefits",
@@ -70,6 +88,8 @@ let allPolicies = {
     Freedom: 10,
     "Public Opinion": 10,
     "Corperate Opinion": 10,
+    "Num Of Contacts": -2,
+    "Survival Rate": 0
   },
   8: {
     Name: "Close Borders",
@@ -79,6 +99,8 @@ let allPolicies = {
     Freedom: -15,
     "Public Opinion": -20,
     "Corperate Opinion": -10,
+    "Num Of Contacts": -2,
+    "Survival Rate": 0
   },
 
   9: {
@@ -89,15 +111,19 @@ let allPolicies = {
     Freedom: 0,
     "Public Opinion": 15,
     "Corperate Opinion": -15,
+    "Num Of Contacts": -1,
+    "Survival Rate": 0
   },
   10: {
-    Name: "Covid Testing Kets",
+    Name: "Covid Testing Kits",
     Description:
       "Gift covid test kits to hospitals. Lowers contacts per day of those infected. Increases public / corprate opinion",
     Price: 2,
     Freedom: 0,
     "Public Opinion": 15,
     "Corperate Opinion": 0,
+    "Num Of Contacts": 1,
+    "Survival Rate": 1
   },
   11: {
     Name: "Covid Health Insurance",
@@ -107,6 +133,8 @@ let allPolicies = {
     Freedom: 20,
     "Public Opinion": 20,
     "Corperate Opinion": -20,
+    "Num Of Contacts": -1,
+    "Chance Of Spread": -10
   },
 
   12: {
@@ -117,6 +145,8 @@ let allPolicies = {
     Freedom: 0,
     "Public Opinion": -5,
     "Corperate Opinion": 15,
+    "Num Of Contacts": 0,
+    "Survival Rate": 0
   },
   13: {
     Name: "Mass Ventilator Production",
@@ -126,6 +156,8 @@ let allPolicies = {
     Freedom: 10,
     "Public Opinion": 10,
     "Corperate Opinion": 10,
+    "Num Of Contacts": 0,
+    "Survival Rate": 2
   },
   14: {
     Name: "Covid Tracing",
@@ -135,7 +167,20 @@ let allPolicies = {
     Freedom: -10,
     "Public Opinion": 10,
     "Corperate Opinion": 0,
+    "Num Of Contacts": -1,
+    "Survival Rate": 0
   },
+  15: {
+    Name: "Reelect the Town Mayor",
+    Description:
+      "The Town Mayor has been doing a poor job at handling corona virus spread, so the town decided to impeach him! Incrases Public Opinion but also severely increases number of contacts!",
+    Price: 3,
+    Freedom: 20,
+    "Public Opinion": 20,
+    "Corperate Opinion": -10,
+    "Num Of Contacts": 40,
+    "Survival Rate": 0
+  }
 };
 
 class Game {
@@ -173,13 +218,14 @@ class Game {
     // Array data
     this.personArray = [];
     for (let i = 0; i < totalPeople; i++) {
-      let person = this.createPerson(35, 1, 50);
+      let person = this.createPerson(35, 1, 50, 3);
       this.personArray.push(person);
     }
     console.log(this.personArray);
 
     this.policyArray = [];
     this.curedArray = [];
+    this.deadArray = [];
   }
 
   // Game starting
@@ -193,6 +239,9 @@ class Game {
   }
 
   incrementTime() {
+
+    console.log(document.getElementById("days").innerHTML);
+    document.getElementById("days").innerHTML =  Number.parseInt(document.getElementById("days").innerHTML) + 1;
     this.publicOpinion = 50;
     this.corporateOpinion = 50;
     this.freedomOpinion = 50;
@@ -202,6 +251,12 @@ class Game {
         this.publicOpinion += policyArray[i].getPublicOpinion();
         this.corporateOpinion += policyArray[i].getCorporateOpinion();
         this.freedomOpinion += policyArray[i].getFreedomOpinion();
+        for(let j = 0; j < this.personArray.length; j++) {
+          //Change max numContacts here or go to getNumContacts() and set it there
+          let person = this.personArray[j];
+          person.setNumContacts(policyArray[i].getNumContacts());
+          person.setSurvivalRate(policyArray[i].getSurvivalRate());
+        }
       }
     }
     // Change the progress bars
@@ -215,15 +270,26 @@ class Game {
     for (let i = 0; i < this.personArray.length; i++) {
       // This determines the person in the population
       let person = this.personArray[i];
+
+      if (person.getIsInfected()) {
+        person.incrementInfect();
+      }
+      
       if (person.getIsIncubated()) {
         person.infect();
         person.isIncubated = false;
       }
-      if (person.getIsInfected()) {
-        person.updateSurvivalRate();
-        person.incrementInfect();
+
+      if(person.getIsDead())
+      {
+        continue;
       }
-      for (let j = 0; j < this.randomNumber(this.maxNumOfContacts); j++) {
+      //console.log(this.randomNumber(person.getNumContacts()));
+      let add = -1;
+      if(Math.random() * 10 + 1 > 5)add = 0;
+      //console.log(add);
+      for (let j = 0; j < this.randomNumber(person.getNumContacts()) + add; j++) {
+        
         // This determines who the person he is going to Contact
         let contactedPerson = this.personArray[
           this.randomNumber(this.personArray.length) - 1
@@ -239,7 +305,6 @@ class Game {
           contactedPerson.isIncubated = true;
         }
       }
-      //Nishio's op code use it or bad jack
       // if (person.getIsInfected()) {
       //   person.numInfectedDays()++;
       // }
@@ -249,7 +314,7 @@ class Game {
       //   if (randomNumber <= 5) {
       //     person.isDead = true;
       //   }else{
-      //     person.isCured = true;
+      //     person.isCured  true;
       //   }
       //   person.cured();
       // }
@@ -258,30 +323,35 @@ class Game {
     $("#infectedCount").text(infectionCount);
     let deathCount = this.checkDeathCount();
     $("#deathCount").text(deathCount);
+    drawChart();
+    console.log(this.personArray);
   }
 
   checkInfectionCount() {
     let count = 0;
-    for (let i = 0; i < this.personArray.length; i++) {
-      if (this.personArray[i].getIsInfected()) {
+    for (let j = 0; j < this.personArray.length; j++) {
+      if (this.personArray[j].getIsInfected()) {
         count++;
       }
     }
     return count;
   }
   checkDeathCount() {
+    return this.deadArray.length;
+  }
+  
+  checkWealthyCount(){
     let count = 0;
-    for (let i = 0; i < this.personArray.length; i++) {
-      if (this.personArray[i].getIsDead()) {
+    for(let i = 0; i < this.personArray.length; i++){
+      if (!this.personArray[i].getIsDead() && this.personArray[i].rich()) {
         count++;
       }
     }
-    return count;
   }
 
   // Creations
 
-  createPerson(educationPercentage, infectionPercentage, wealthyPercentage) {
+  createPerson(educationPercentage, infectionPercentage, wealthyPercentage, maxNumOfContacts) {
     // False is default
     let isEducated, isInfected, isWealthy, isIncubated;
     isEducated = isInfected = isWealthy = isIncubated = false;
@@ -292,7 +362,7 @@ class Game {
     if (this.probabilityCalculator(wealthyPercentage)) isWealthy = true;
 
     // Add person to person Array
-    return new Person(isEducated, isInfected, isWealthy, isIncubated);
+    return new Person(isEducated, isInfected, isWealthy, isIncubated, maxNumOfContacts);
   }
   // Create an Array of people
   // Go through a for loop
@@ -304,7 +374,8 @@ class Game {
     cost,
     publicOpinion,
     corporateOpinion,
-    freedomOpinion
+    freedomOpinion,
+    numOfContacts
   ) {
     return new Policy(
       name,
@@ -312,7 +383,8 @@ class Game {
       cost,
       publicOpinion,
       corporateOpinion,
-      freedomOpinion
+      freedomOpinion,
+      numOfContacts
     );
   }
 
@@ -324,7 +396,9 @@ class Game {
         allPolicies[i].Price,
         allPolicies[i]["Public Opinion"],
         allPolicies[i]["Corperate Opinion"],
-        allPolicies[i].Freedom
+        allPolicies[i].Freedom,
+        allPolicies[i]["Num Of Contacts"],
+        allPolicies[i]["Survival Rate"]
       );
       this.policyArray.push(policy);
     }
@@ -366,6 +440,10 @@ class Game {
     return this.personArray;
   }
 
+  getDeadPersonArray()
+  {
+    return this.deadArray;
+  }
   // Setter Method
 
   // Helper Methods
@@ -381,15 +459,16 @@ class Game {
 
 class Person {
   //
-  constructor(isEducated, isInfected, isWealthy, isIncubated) {
+  constructor(isEducated, isInfected, isWealthy, isIncubated, numOfContacts) {
     this.isEducated = isEducated;
     this.isInfected = isInfected;
     this.isWealthy = isWealthy;
     this.isIncubated = isIncubated;
-    this.survivalRate = 95;
+    this.survivalRate = 90;
     this.numInfectedDays = 0;
     this.isDead = false;
     this.isCured = false;
+    this.numOfContacts = numOfContacts;
   }
 
   incubate() {
@@ -397,23 +476,21 @@ class Person {
   }
 
   incrementInfect() {
-    if (!(Math.floor(Math.random() * 100) + 1 <= this.survivalRate)) {
-      this.isDead = true;
-      this.isInfected = false;
-    }
-    if (this.numInfectedDays > 7) {
-      this.isCured = true;
-      this.isInfected = false;
+    if (this.numInfectedDays >= 7) {
+      if(Math.floor(Math.random() * 100) + 1 > this.survivalRate)
+      {
+        this.isDead = true;
+        this.isInfected = false;
+        console.log("HI");
+        game.getDeadPersonArray().push(this);
+      }
+      else
+      {
+        this.isCured = true;
+        this.isInfected = false;
+      }
     }
     this.numInfectedDays++;
-  }
-
-  updateSurvivalRate() {
-    if (this.isWealthy) {
-      this.survivalRate = 95 - 5 * this.numInfectedDays;
-    } else {
-      this.survivalRate = 95 - 10 * this.numInfectedDays;
-    }
   }
 
   infect() {
@@ -434,10 +511,18 @@ class Person {
     this.isWealthy = false;
   }
 
-  educated() {
-    this.isEducated = true;
+  getNumContacts(){
+    return this.numOfContacts;
+  }
+  setNumContacts(contacts){
+    this.numOfContacts += contacts;
+    if(this.numOfContacts <0)this.numOfContacts =0;
   }
 
+  setSurvivalRate(rate)
+  {
+    this.survivalRate + this.survivalRate;
+  }
   // Getter
   getIsIncubated() {
     return this.isIncubated;
@@ -466,14 +551,6 @@ class Person {
   educated() {
     this.isEducated = true;
   }
-
-  getNumDays() {
-    return this.numInfectedDays;
-  }
-
-  getSurvivalRate() {
-    return this.survivalRate;
-  }
 }
 
 class Policy {
@@ -483,7 +560,9 @@ class Policy {
     cost,
     publicOpinion,
     corporateOpinion,
-    freedomOpinion
+    freedomOpinion,
+    numOfContacts,
+    survivalRate
   ) {
     this.name = name;
     this.description = description;
@@ -492,6 +571,8 @@ class Policy {
     this.corporateOpinion = corporateOpinion;
     this.freedomOpinion = freedomOpinion;
     this.implementation = false;
+    this.numOfContacts = numOfContacts;
+    this.survivalRate = survivalRate;
   }
 
   getImplementation() {
@@ -529,12 +610,20 @@ class Policy {
   getDescription() {
     return this.description;
   }
+  
+  getNumContacts(){
+    return this.numOfContacts;
+  }
+
+  getSurvivalRate(){
+    return this.survivalRate;
+  }
 }
 
 //Regular Functions
 // import { Game } from "website/Game";
 
-const game = new Game(2000, 50, 0.005, 1, 50, 5);
+const game = new Game(2000, 50, 0.005, 5, 50, 5);
 
 $(document).ready(function () {
   create();
@@ -637,8 +726,31 @@ let confirm = () => {
   }
 };
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart()
+{
+  console.log();
+  var data = google.visualization.arrayToDataTable([
+    ['Covid', 'Pop Stars'],
+    ['Infected',     game.checkInfectionCount()],
+    ['Dead',      game.checkDeathCount()],
+    ['Normal',  game.totalPeople - game.checkInfectionCount() - game.checkDeathCount()],
+  ]);
+
+  var options = {
+    title: 'Covid Chart',
+    backgroundColor: 'none',
+    legend: 'none',
+    title: ''
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  
+  chart.draw(data, options);
+}
 function stats() {
-  let list = game.getPersonArray();
+  /*let list = game.getPersonArray();
   console.log(list);
   for (let i = 0; i < list.length; i++) {
     let obj = document.createElement("DIV");
@@ -655,8 +767,8 @@ function stats() {
       ": survivalRate, " +
       list[i].getSurvivalRate();
     console.log(obj);
-    document.getElementById("stats").appendChild(obj);
-  }
+    document.getElementById("stats").appendChild(obj);*/
+    
 }
 
 // update = () => {

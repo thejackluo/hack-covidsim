@@ -2,7 +2,6 @@
 	Jack Luo Website by Jack
 	www.jack-luo.com | @thejackluo
 */
-
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -30,6 +29,11 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
+}
+
+body
+{
+  padding: 0px;
 }
 
 #blackBox {
@@ -70,6 +74,8 @@
   justify-content: center;
   width: 100%;
   height: 100vh;
+  padding: 20px;
+  flex-direction: row;
 }
 
 #policy {
@@ -197,6 +203,15 @@
 
 #stats {
   font-family: "Roboto Mono", monospace;
+  display: flex;
+  margin-left: 4%;
+  width: 250px;
+  background-color: rgb(182, 182, 182);
+  margin: 40px 2%;
+  height: 45vw;
+  max-height: 495px;
+  align-items: center;
+  justify-content: center;
 }
 
 /*@media*/
@@ -247,6 +262,11 @@
 
   .policyItem {
     font-size: 12px;
+  }
+
+  #flexContainer
+  {
+    flex-direction: column;
   }
 }
 

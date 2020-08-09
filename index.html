@@ -33,7 +33,10 @@
     /></noscript>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
+
+
   <body>
     <div class="alert alert-success" id="alertMessageSuccess">
       <strong>Success!</strong> You have purchased for.
@@ -42,7 +45,7 @@
       <strong>Sorry!</strong> You didn't have enough action to purchase this
       policy.
     </div>
-    <div id="blackBox">
+    <div id="blackBox" style = "z-index: 10">
       <div id="blackBoxContianer">
         <i class="fa fa-times" aria-hidden="true" onclick="hide(this)"></i>
         <div
@@ -106,14 +109,6 @@
             <div id="endTurn" class="buttonA" style="margin-top: 10px;">
               End Turn
             </div>
-            <div
-              id="statButton"
-              class="buttonA"
-              style="margin-top: 10px;"
-              onclick="stats()"
-            >
-              Statistics
-            </div>
           </div>
         </div>
 
@@ -126,6 +121,10 @@
             <div class="rightObject">
               <i class="fas fa-biohazard imgSize"></i>
               <div class="rightObjText" id="infectedCount">0</div>
+            </div>
+            <div class="rightObject">
+              <i class="fa fa-calendar imgSize" aria-hidden="true"></i>
+              <div class="rightObjText" id="days">0</div>
             </div>
           </div>
 
@@ -162,9 +161,12 @@
 
         <div id="img"></div>
       </div>
+      
+      <div id="stats">
+        <div id="piechart" style = "z-index: 1"></div>
+      </div>
     </div>
 
-    <div id="stats"></div>
     <script></script>
     <script src="assets/js/frameworks/jquery.min.js"></script>
     <script src="assets/js/frameworks/popper.min.js"></script>
