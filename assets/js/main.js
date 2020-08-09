@@ -239,6 +239,7 @@ class Game {
           contactedPerson.isIncubated = true;
         }
       }
+      //Nishio's op code use it or bad jack
       // if (person.getIsInfected()) {
       //   person.numInfectedDays()++;
       // }
@@ -248,7 +249,7 @@ class Game {
       //   if (randomNumber <= 5) {
       //     person.isDead = true;
       //   }else{
-      //     person.isCured  true;
+      //     person.isCured = true;
       //   }
       //   person.cured();
       // }
@@ -433,6 +434,10 @@ class Person {
     this.isWealthy = false;
   }
 
+  educated() {
+    this.isEducated = true;
+  }
+
   // Getter
   getIsIncubated() {
     return this.isIncubated;
@@ -460,6 +465,14 @@ class Person {
 
   educated() {
     this.isEducated = true;
+  }
+
+  getNumDays() {
+    return this.numInfectedDays;
+  }
+
+  getSurvivalRate() {
+    return this.survivalRate;
   }
 }
 
