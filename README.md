@@ -1,5 +1,5 @@
-# jackluo-website-template
+# Covid simulator
 
-Jack Luo's Website Template with Bootstrap, JQuery, FontAwesome, Normalize
+A way to simulate pandemic rates using native algorithm
 
-Author: Hanzhang Luo, Alexander Nishio, Kunal Gupta
+Author: Hanzhang (Jack) Luo, Alexander Nishio, Kunal Gupta
